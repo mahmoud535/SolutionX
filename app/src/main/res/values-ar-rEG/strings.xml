@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SolutionX</string>
+
+    <string name="please_wait">الرجاء الانتظار&#8230;</string>
+    <string name="please_click_back_again_to_exit">الرجاء النقر مرة أخرى للخروج.</string>
+    <string name="title_login">تسجيل الدخول</string>
+    <string name="et_hint_email_id">عنوان الايميل</string>
+    <string name="et_hint_password">كلمة المرور</string>
+    <string name="login_client">تسجيل الدخول</string>
+    <string name="lbl_forgot_password">هل نسيت كلمة السر؟</string>
+    <string name="don_t_have_an_account">ليس لديك حساب؟</string>
+    <string name="register"><u>تسجيل</u></string>
+    <string name="create_an_account">انشئ حساب</string>
+    <string name="hint_first_name_Client">الاسم الاول</string>
+    <string name="hint_last_name_Client">اسم العائلة</string>
+    <string name="et_hint_confirm_password_Client">تأكيد كلمة المرور</string>
+    <string name="i_agree_to_the_terms_and_condition">أنا أوافق على <u> Terms &amp; Condition </u></string>
+    <string name="btn_lbl_register">تسجيل</string>
+    <string name="login"><u>تسجيل الدخول</u></string>
+    <string name="already_have_an_account">هل لديك حساب؟</string>
+    <string name="title_forgot_password">هل نسيت كلمة السر؟</string>
+    <string name="forgot_password_title_description">أدخل اسم المستخدم وعنوان البريد الإلكتروني الخاصين بك ، وسنرسل لك بريدًا إلكترونيًا لإعادة تعيين كلمة المرور الخاصة بك</string>
+    <string name="btn_lbl_submit">إرسال</string>
+
+    <string name="email">بريد إلكتروني</string>
+    <string name="password">كلمة المرور</string>
+
+</resources>
