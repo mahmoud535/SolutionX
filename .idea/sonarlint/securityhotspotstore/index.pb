@@ -9,3 +9,13 @@ P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 g
 7app/src/main/java/com/example/solutionx/MainActivity.kt,4\e\4e7b8922fa0eb712be2686256918055d7387f20a
+i
+9app/src/main/java/com/example/solutionx/LoginActivity2.kt,5\8\58031a307188e64175b15a2483baf6e071689d16
+h
+8app/src/main/java/com/example/solutionx/LoginActivity.kt,9\f\9fcfbd868c488879a83dfe544172b0b995bffd8a
+j
+:app/src/main/java/com/example/solutionx/utils/MSPButton.kt,a\4\a465418d237eb438d702fcaac13344431532a391
+l
+<app/src/main/java/com/example/solutionx/utils/MSPEditText.kt,3\3\33a8ee94e4a8c16c1bc068cb7add6ee74f7368c5
+l
+<app/src/main/java/com/example/solutionx/utils/MSPTextView.kt,f\a\fa7e8582fe7493aff271a40628bdb5773a905b90
