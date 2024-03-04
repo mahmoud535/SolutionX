@@ -2,6 +2,7 @@ package com.example.solutionx
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,12 +26,14 @@ class LoginActivity : AppCompatActivity() {
         binding.ivLanguages.setOnClickListener {
             showChangeLanguagesDialog()
         }
+        binding.btnLogin.setOnClickListener {
+            val intent = Intent(this, ListActivity::class.java)
+            startActivity(intent)
+        }
     }
 
-    //لتغيير اللغه
     private fun showChangeLanguagesDialog() {
         val listItmes = arrayOf("عربي","English")
-
         val mBuilder = AlertDialog.Builder(this@LoginActivity)
         mBuilder.setTitle("Choose Language")
         mBuilder.setSingleChoiceItems(listItmes, -1) { dialog, which ->
@@ -42,30 +45,22 @@ class LoginActivity : AppCompatActivity() {
                 setLocate("en")
                 recreate()
             }
-
             dialog.dismiss()
         }
         val mDialog = mBuilder.create()
-
         mDialog.show()
     }
 
     private fun setLocate(Lang: String) {
-
         val locale = Locale(Lang)
-
         Locale.setDefault(locale)
-
         val config = Configuration()
-
         config.locale = locale
         baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
-
         val editor = getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
         editor.putString("My_Lang", Lang)
         editor.apply()
     }
-
     private fun loadLocate() {
         val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
         val language = sharedPreferences.getString("My_Lang", "")
