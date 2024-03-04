@@ -1,20 +1,4 @@
 
-C
-settings.gradle.kts,7\4\749edfcc96398253e5b3416184e95c46621da850
-@
-build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
-D
-app/build.gradle.kts,d\2\d2a4383452aad84a18429a5844d31330a012a9e6
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-g
-7app/src/main/java/com/example/solutionx/MainActivity.kt,4\e\4e7b8922fa0eb712be2686256918055d7387f20a
-i
-9app/src/main/java/com/example/solutionx/LoginActivity2.kt,5\8\58031a307188e64175b15a2483baf6e071689d16
-h
-8app/src/main/java/com/example/solutionx/LoginActivity.kt,9\f\9fcfbd868c488879a83dfe544172b0b995bffd8a
-j
-:app/src/main/java/com/example/solutionx/utils/MSPButton.kt,a\4\a465418d237eb438d702fcaac13344431532a391
 l
 <app/src/main/java/com/example/solutionx/utils/MSPEditText.kt,3\3\33a8ee94e4a8c16c1bc068cb7add6ee74f7368c5
 l
@@ -25,3 +9,5 @@ h
 8app/src/main/java/com/example/solutionx/utils/MSPText.kt,2\c\2c1c9255c95bab8d4466f245bbf98e5229c2e05b
 p
 @app/src/main/java/com/example/solutionx/utils/MSPTextViewBold.kt,2\2\226f944ac7fbd30bf59cc5e060c19503bdb079b4
+D
+app/build.gradle.kts,d\2\d2a4383452aad84a18429a5844d31330a012a9e6
