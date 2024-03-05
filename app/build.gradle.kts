@@ -30,7 +30,7 @@ android {
         }
     }
 
-    buildFeatures{
+    buildFeatures {
         buildConfig = true
         viewBinding = true
     }
@@ -42,15 +42,20 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    flavorDimensions += listOf("ProductTypes")
+
+    flavorDimensions += ("logging")
     productFlavors {
-        create("free") {
-            dimension = "ProductTypes"
-            applicationId = "com.example.free"
+        create("logCat") {
+            dimension = "logging"
+            applicationId = "com.example.logCat"
         }
-        create("pro") {
-            dimension = "ProductTypes"
-            applicationId = "com.example.pro"
+        create("logWriter") {
+            dimension = "logging"
+            applicationId = "com.example.logWriter"
+        }
+        create("production") {
+            dimension = "logging"
+            applicationId = "com.example.production"
         }
     }
 }
@@ -67,6 +72,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     //intuit
-    implementation ("com.intuit.sdp:sdp-android:1.1.0")
+    implementation("com.intuit.sdp:sdp-android:1.1.0")
 
 }
