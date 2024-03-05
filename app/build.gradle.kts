@@ -30,9 +30,11 @@ android {
         }
     }
 
-    buildFeatures{
+    buildFeatures {
         buildConfig = true
+        viewBinding = true
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -40,16 +42,45 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    flavorDimensions += listOf("ProductTypes")
+//    flavorDimensions += listOf("ProductTypes")
+//    productFlavors {
+//        create("free") {
+//            dimension = "ProductTypes"
+//            applicationId = "com.example.free"
+//        }
+//        create("pro") {
+//            dimension = "ProductTypes"
+//            applicationId = "com.example.pro"
+//        }
+//    }
+    flavorDimensions += ("logging")
+
     productFlavors {
-        create("free") {
-            dimension = "ProductTypes"
-            applicationId = "com.example.free"
+        create("logCat") {
+            dimension = "logging"
+            applicationId = "com.example.logCat"
         }
-        create("pro") {
-            dimension = "ProductTypes"
-            applicationId = "com.example.pro"
+        create("logWriter") {
+            dimension = "logging"
+            applicationId = "com.example.logWriter"
         }
+        create("production") {
+            dimension = "logging"
+            applicationId = "com.example.production"
+        }
+
+//        logCat {
+//            dimension "logging"
+//            applicationIdSuffix ".logCat"
+//        }
+//        logWriter {
+//            dimension "logging"
+//            applicationIdSuffix ".logWriter"
+//        }
+//        production {
+//            dimension "logging"
+//            applicationIdSuffix ".production"
+//        }
     }
 }
 
@@ -59,7 +90,12 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.emoji2:emoji2-emojipicker:1.4.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    //intuit
+    implementation("com.intuit.sdp:sdp-android:1.1.0")
+
 }
