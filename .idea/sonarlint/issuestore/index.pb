@@ -37,3 +37,5 @@ w
 Gapp/src/main/java/com/example/solutionx/domain/model/DisplayableItem.kt,a\b\ab7f85cfecacf49a899da967be6390e5e2bbf1c3
 p
 @app/src/main/java/com/example/solutionx/domain/model/ItemType.kt,8\3\83b3d8d59aef39767f350dee8078582224bac6d4
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
