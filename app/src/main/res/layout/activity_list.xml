@@ -7,9 +7,6 @@
     android:background="@color/colorLightGrey"
     tools:context=".presentation.activity.ListActivity">
 
-
-
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCountry"
                 android:layout_width="match_parent"
@@ -20,62 +17,5 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:listitem="@layout/list_items" />
-
-<!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                android:id="@+id/rvCurrencies"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="@dimen/_180sdp"-->
-<!--                android:layout_marginBottom="50dp"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/rvCountry"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.0"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                tools:listitem="@layout/list_items" />-->
-
-<!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                android:id="@+id/rvFilter"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="@dimen/_150sdp"-->
-<!--                android:layout_marginBottom="50dp"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/rvCurrencies"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.0"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                tools:listitem="@layout/list_items" />-->
-
-            <TextView
-                android:id="@+id/tv_Country"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Countries"
-                android:textSize="@dimen/_18sdp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/rvCountry"
-                app:layout_constraintEnd_toEndOf="@+id/rvCountry"
-                app:layout_constraintStart_toStartOf="parent" />
-
-<!--            <TextView-->
-<!--                android:id="@+id/tv_Currencies"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Currencies"-->
-<!--                android:textSize="@dimen/_18sdp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/rvCurrencies"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/rvCurrencies"-->
-<!--                app:layout_constraintStart_toStartOf="parent" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tv_Filter"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Filter"-->
-<!--                android:textSize="@dimen/_18sdp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/rvFilter"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/rvFilter"-->
-<!--                app:layout_constraintStart_toStartOf="parent" />-->
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

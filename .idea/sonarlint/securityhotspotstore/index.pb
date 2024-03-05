@@ -1,22 +1,10 @@
 
-l
-<app/src/main/java/com/example/solutionx/utils/MSPEditText.kt,3\3\33a8ee94e4a8c16c1bc068cb7add6ee74f7368c5
-l
-<app/src/main/java/com/example/solutionx/utils/MSPTextView.kt,f\a\fa7e8582fe7493aff271a40628bdb5773a905b90
-o
-?app/src/main/java/com/example/solutionx/utils/MSPRadioButton.kt,f\f\ff2b547795e4d4984e3905fe2993227e18676cc3
-h
-8app/src/main/java/com/example/solutionx/utils/MSPText.kt,2\c\2c1c9255c95bab8d4466f245bbf98e5229c2e05b
-p
-@app/src/main/java/com/example/solutionx/utils/MSPTextViewBold.kt,2\2\226f944ac7fbd30bf59cc5e060c19503bdb079b4
 D
 app/build.gradle.kts,d\2\d2a4383452aad84a18429a5844d31330a012a9e6
 u
 Eapp/src/main/java/com/example/solutionx/presentation/utils/MSPText.kt,c\7\c7c4c1edad7b6a1a1763d3b5d4b5aa78df62fef2
 }
 Mapp/src/main/java/com/example/solutionx/presentation/utils/MSPTextViewBold.kt,4\e\4e1216ae6449abdb6fcdc3f694a525a8d862a772
-d
-4app/src/main/java/com/example/solutionx/DataModel.kt,8\f\8fc10526152a682a8a6b0058ad76c7e0c282eaa1
 k
 ;app/src/main/java/com/example/solutionx/domain/DataModel.kt,1\5\15500e8b5b5ccc7686bfda79e8fb8bd7c2ccf44f
 }
@@ -37,3 +25,7 @@ w
 Gapp/src/main/java/com/example/solutionx/domain/model/DisplayableItem.kt,a\b\ab7f85cfecacf49a899da967be6390e5e2bbf1c3
 p
 @app/src/main/java/com/example/solutionx/domain/model/ItemType.kt,8\3\83b3d8d59aef39767f350dee8078582224bac6d4
+@
+build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
