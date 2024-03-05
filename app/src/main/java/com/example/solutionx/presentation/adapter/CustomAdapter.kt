@@ -28,7 +28,7 @@ class CustomAdapter(
             ItemType.COUNTRIES.ordinal -> {
                  binding =
                     ListItemsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                CountriesViewHolder(binding,itemList,onItemClickListener)
+                CountriesViewHolder(binding)
             }
 
             ItemType.CURRENCIES.ordinal -> {
