@@ -53,3 +53,7 @@ Qapp/src/main/java/com/example/solutionx/presentation/productflavors/FileLogger.
 Qapp/src/main/java/com/example/solutionx/presentation/productflavors/NullLogger.kt,a\4\a4d451c81fe94df0122e2aeb5c0b0c5b21e36649
 …
 Uapp/src/main/java/com/example/solutionx/presentation/productflavors/LoggerProvider.kt,2\8\282a6997c4bb80b52783a5a84f59f09a8b7036f6
+z
+Japp/src/main/java/com/example/solutionx/presentation/adapter/ViewHolder.kt,6\8\681e85dcb18a376a00b91c7fae9ed7a8246a3a46
+ƒ
+Sapp/src/main/java/com/example/solutionx/presentation/adapter/CountriesViewHolder.kt,8\7\877ed6db9aba6fa98163880bbe569206b81e7044

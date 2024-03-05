@@ -2,10 +2,14 @@ package com.example.solutionx.presentation.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.solutionx.R
 import com.example.solutionx.presentation.adapter.CustomAdapter
 import com.example.solutionx.databinding.ActivityListBinding
+import com.example.solutionx.databinding.ListItemsBinding
 import com.example.solutionx.domain.DataModel
 import com.example.solutionx.domain.model.Countries
 import com.example.solutionx.domain.model.Currencies

@@ -21,14 +21,14 @@ class CustomAdapter(
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private lateinit var binding: ListItemsBinding
-    private var isItemClicked = false
+    private var selectedItemPosition: Int? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             ItemType.COUNTRIES.ordinal -> {
                  binding =
                     ListItemsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                CountriesViewHolder(binding)
+                CountriesViewHolder(binding,itemList,onItemClickListener)
             }
 
             ItemType.CURRENCIES.ordinal -> {
@@ -72,17 +72,15 @@ class CustomAdapter(
             binding.tvCode.text = country.code
             binding.tvFlag.text = country.flag
             binding.tvPhoneCode.text = country.phone_code
-
-            updateItemState()
+            updateItemState(adapterPosition)
 
             binding.root.setOnClickListener {
-                isItemClicked = !isItemClicked
-                onItemClickListener(country)
-                updateItemState()
+               checkItemClick(adapterPosition)
             }
         }
-        private fun updateItemState() {
-            if (isItemClicked) {
+
+        fun updateItemState(position: Int) {
+            if (position==selectedItemPosition) {
                 binding.tvName.setTextColor(ContextCompat.getColor(binding.root.context, R.color.green))
                 binding.tvCode.setTextColor(ContextCompat.getColor(binding.root.context, R.color.green))
                 binding.tvFlag.setTextColor(ContextCompat.getColor(binding.root.context, R.color.green))
@@ -102,21 +100,20 @@ class CustomAdapter(
 
     inner class CurrenciesViewHolder(private val binding: ListItemsBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(currency: Currencies) {
-            // Bind currency data
             binding.tvName.text = currency.name
             binding.tvCode.text = currency.code
             binding.tvFlag.text = currency.sign
             binding.tvCurrency.visibility = View.GONE
             binding.tvPhoneCode.visibility = View.GONE
+            updateItemState(adapterPosition)
 
-            updateItemState()
             binding.root.setOnClickListener {
-                isItemClicked = !isItemClicked
-                onItemClickListener(currency)
-                updateItemState()
+                checkItemClick(adapterPosition)
             }
         }
+
     }
 
     inner class FilterViewHolder(private val binding: ListItemsBinding) :
@@ -127,19 +124,16 @@ class CustomAdapter(
             binding.tvCode.visibility = View.GONE
             binding.tvFlag.visibility = View.GONE
             binding.tvPhoneCode.visibility = View.GONE
-
-            updateItemState()
+            updateItemState(adapterPosition)
 
             binding.root.setOnClickListener {
-                isItemClicked = !isItemClicked
-                onItemClickListener(filter)
-                updateItemState()
+                checkItemClick(adapterPosition)
             }
         }
     }
 
-     fun updateItemState() {
-        if (isItemClicked) {
+     fun updateItemState(position: Int) {
+        if (position==selectedItemPosition) {
             binding.tvName.setTextColor(ContextCompat.getColor(binding.root.context, R.color.green))
             binding.tvCode.setTextColor(ContextCompat.getColor(binding.root.context, R.color.green))
             binding.tvFlag.setTextColor(ContextCompat.getColor(binding.root.context, R.color.green))
@@ -153,6 +147,19 @@ class CustomAdapter(
             binding.tvCurrency.setTextColor(ContextCompat.getColor(binding.root.context, R.color.black))
             binding.tvPhoneCode.setTextColor(ContextCompat.getColor(binding.root.context, R.color.black))
             binding.ivCheck.visibility = View.GONE
+        }
+    }
+
+    fun checkItemClick(adapterPosition:Int){
+        val clickedPosition = adapterPosition
+        if (clickedPosition != RecyclerView.NO_POSITION) {
+            if (selectedItemPosition == clickedPosition) {
+                selectedItemPosition = null
+            } else {
+                selectedItemPosition = clickedPosition
+            }
+            notifyDataSetChanged()
+            onItemClickListener(itemList[clickedPosition])
         }
     }
 }
