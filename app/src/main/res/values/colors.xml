@@ -20,6 +20,8 @@
     <color name="grey_200">#F9FAFB</color>
 
     <color name="colorSnackBarSuccess">#8BC34A</color>
+    <color name="green">#50BC75</color>
+
     <color name="colorSnackBarError">#F72400</color>
 
     <color name="colorPrimaryText">#222934</color>
