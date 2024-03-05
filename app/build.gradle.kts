@@ -42,19 +42,8 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-//    flavorDimensions += listOf("ProductTypes")
-//    productFlavors {
-//        create("free") {
-//            dimension = "ProductTypes"
-//            applicationId = "com.example.free"
-//        }
-//        create("pro") {
-//            dimension = "ProductTypes"
-//            applicationId = "com.example.pro"
-//        }
-//    }
-    flavorDimensions += ("logging")
 
+    flavorDimensions += ("logging")
     productFlavors {
         create("logCat") {
             dimension = "logging"
@@ -68,19 +57,6 @@ android {
             dimension = "logging"
             applicationId = "com.example.production"
         }
-
-//        logCat {
-//            dimension "logging"
-//            applicationIdSuffix ".logCat"
-//        }
-//        logWriter {
-//            dimension "logging"
-//            applicationIdSuffix ".logWriter"
-//        }
-//        production {
-//            dimension "logging"
-//            applicationIdSuffix ".production"
-//        }
     }
 }
 
