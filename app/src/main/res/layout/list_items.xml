@@ -89,7 +89,8 @@
         android:layout_marginEnd="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/check_circle_24" />
+        app:srcCompat="@drawable/check_circle_24"
+        android:visibility="gone"/>
 
     <View
         android:id="@+id/grayLine"
@@ -99,6 +100,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="parent"
+     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
