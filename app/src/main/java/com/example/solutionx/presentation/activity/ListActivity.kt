@@ -9,11 +9,16 @@ import com.example.solutionx.databinding.ActivityListBinding
 import com.example.solutionx.domain.DataModel
 import com.example.solutionx.domain.model.Countries
 import com.example.solutionx.domain.model.Currencies
+import com.example.solutionx.domain.model.DisplayableItem
 import com.example.solutionx.domain.model.Filter
 
 class ListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListBinding
 
+    private val customAdapter:CustomAdapter by lazy {
+        CustomAdapter(itemList = DataModel.countryList,
+            onItemClickListener = { item -> checkInClickItem(item) })
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,31 +28,25 @@ class ListActivity : AppCompatActivity() {
         setupRecyclerViews()
 
     }
-
-    private fun setupRecyclerViews(){
+    private fun setupRecyclerViews() {
         binding.rvCountry.apply {
             layoutManager = LinearLayoutManager(this@ListActivity)
-            adapter = CustomAdapter(
-                itemList = DataModel.countryList,
-                onItemClickListener = { item ->
-                    when (item) {
-                        is Currencies -> handleCurrencyClick(item)
-                        is Countries -> handleCountryClick(item)
-                        is Filter -> handleFilterClick(item)
-                    }
-                }
-            )
+            adapter = customAdapter
         }
     }
-
+    private fun checkInClickItem(item:DisplayableItem){
+        when (item) {
+            is Currencies -> handleCurrencyClick(item)
+            is Countries -> handleCountryClick(item)
+            is Filter -> handleFilterClick(item)
+        }
+    }
     private fun handleCurrencyClick(currency: Currencies) {
         Toast.makeText(this, "this is Currency Items", Toast.LENGTH_SHORT).show()
     }
-
     private fun handleCountryClick(country: Countries) {
         Toast.makeText(this, "this is Country Items", Toast.LENGTH_SHORT).show()
     }
-
     private fun handleFilterClick(filter: Filter) {
         Toast.makeText(this, "this is Filter Items", Toast.LENGTH_SHORT).show()
     }
