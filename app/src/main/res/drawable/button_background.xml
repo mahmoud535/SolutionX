@@ -26,12 +26,11 @@
 
 
 
-    <gradient
-        android:angle="360"
-        android:endColor="#0575E6"
-        android:startColor="#00F260"
-        android:type="linear" />
-    <corners android:radius="25dp"/>
+<!--    <gradient-->
+<!--        android:angle="360"-->
+<!--        android:endColor="#0575E6"-->
+<!--        android:startColor="#00F260"-->
+<!--        android:type="linear" />-->
 
 <!--    <gradient-->
 <!--        android:angle="360"-->

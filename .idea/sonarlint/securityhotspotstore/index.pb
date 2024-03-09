@@ -1,10 +1,6 @@
 
 D
 app/build.gradle.kts,d\2\d2a4383452aad84a18429a5844d31330a012a9e6
-u
-Eapp/src/main/java/com/example/solutionx/presentation/utils/MSPText.kt,c\7\c7c4c1edad7b6a1a1763d3b5d4b5aa78df62fef2
-}
-Mapp/src/main/java/com/example/solutionx/presentation/utils/MSPTextViewBold.kt,4\e\4e1216ae6449abdb6fcdc3f694a525a8d862a772
 k
 ;app/src/main/java/com/example/solutionx/domain/DataModel.kt,1\5\15500e8b5b5ccc7686bfda79e8fb8bd7c2ccf44f
 }
@@ -21,10 +17,6 @@ r
 Bapp/src/main/java/com/example/solutionx/domain/model/Currencies.kt,5\0\504961db431bb9674d796eab2576a424b2f9189d
 n
 >app/src/main/java/com/example/solutionx/domain/model/Filter.kt,3\0\30d4e0657ccb0e29b0f53579bce1780bb337cdd1
-w
-Gapp/src/main/java/com/example/solutionx/domain/model/DisplayableItem.kt,a\b\ab7f85cfecacf49a899da967be6390e5e2bbf1c3
-p
-@app/src/main/java/com/example/solutionx/domain/model/ItemType.kt,8\3\83b3d8d59aef39767f350dee8078582224bac6d4
 @
 build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
 P
@@ -41,5 +33,13 @@ Qapp/src/main/java/com/example/solutionx/presentation/productflavors/FileLogger.
 Qapp/src/main/java/com/example/solutionx/presentation/productflavors/NullLogger.kt,a\4\a4d451c81fe94df0122e2aeb5c0b0c5b21e36649
 …
 Uapp/src/main/java/com/example/solutionx/presentation/productflavors/LoggerProvider.kt,2\8\282a6997c4bb80b52783a5a84f59f09a8b7036f6
-ƒ
-Sapp/src/main/java/com/example/solutionx/presentation/adapter/CountriesViewHolder.kt,8\7\877ed6db9aba6fa98163880bbe569206b81e7044
+r
+Bapp/src/main/java/com/example/solutionx/domain/model/SingleItem.kt,a\f\afb39f095c4d5622619266400e298aac8d3a1485
+y
+Iapp/src/androidTest/java/com/example/solutionx/ExampleInstrumentedTest.kt,7\2\7227adcd9f0222714e907d4d3db3bfa5bf105ede
+q
+Aapp/src/main/java/com/example/solutionx/domain/model/DataModel.kt,0\c\0c6413c3f47ae5fe80f707b76e85056ee471bfd0
+
+Oapp/src/main/java/com/example/solutionx/presentation/adapter/OnListItemClick.kt,a\d\adfb8798079a92ddca15120dac73e2a89f8085da
+z
+Japp/src/main/java/com/example/solutionx/presentation/adapter/SingleItem.kt,0\6\06dcafe24ecc1f1f947810d7fbd81b096abb1a52
