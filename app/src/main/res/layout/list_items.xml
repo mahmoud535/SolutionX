@@ -13,7 +13,7 @@
         android:layout_height="30dp"
         android:layout_margin="@dimen/_10sdp"
         android:layout_marginTop="16dp"
-        android:hint="Country Name"
+        android:hint="Name"
         android:textColor="@color/black"
         android:textSize="13sp"
         android:textStyle="bold"
@@ -21,65 +21,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_PhoneCode"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:hint="Phone code"
-        android:textColor="@color/black"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="@+id/tv_Name"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_Name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Name" />
-
-    <TextView
-        android:id="@+id/tv_Code"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:hint="code"
-        android:textColor="@color/black"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_Name"
-        app:layout_constraintStart_toEndOf="@+id/tv_Name"
-        app:layout_constraintTop_toTopOf="@+id/tv_Name"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/tv_Currency"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="12dp"
-        android:hint="Currency"
-        android:textColor="@color/black"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_PhoneCode"
-        app:layout_constraintStart_toEndOf="@+id/tv_PhoneCode"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Name"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/tv_Flag"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="12dp"
-        android:hint="Flag"
-        android:textColor="@color/black"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_Currency"
-        app:layout_constraintStart_toEndOf="@+id/tv_Currency"
-        app:layout_constraintTop_toTopOf="@+id/tv_Currency"
-        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/iv_Check"

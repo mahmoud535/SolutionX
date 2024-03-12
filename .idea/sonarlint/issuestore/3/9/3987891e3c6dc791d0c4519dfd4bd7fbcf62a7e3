@@ -1,0 +1,14 @@
+
+[kotlin:S11728"7Use "_" instead of this unused lambda parameter "user".(ñ± ›ÿÿÿÿÿ8ÛªÖ ã1
+Bkotlin:S125%"Remove this commented out code.(•Àµüÿÿÿÿ8‰‘Ü ã1
+=kotlin:S125B"Remove this commented out code.(í†ÿï8ÌÍÜ ã1
+lkotlin:S117\"NRename this parameter to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(ôäÏ²8ãªÖ ã1
+9kotlin:S1128	"Remove this unused import.(´Ùí8Ë‘¡ ã1
+>kotlin:S1128"Remove this unused import.(Øîğùÿÿÿÿ8Ë‘¡ ã1
+>kotlin:S1128"Remove this unused import.(èãÊõûÿÿÿÿ8¸µ× ã1
+>kotlin:S1128"Remove this unused import.(£ñ¹¸ûÿÿÿÿ8™‘Ü ã1
+>kotlin:S1128"Remove this unused import.(ŞŠ‹Ùüÿÿÿÿ8¹µ× ã1
+>kotlin:S1128"Remove this unused import.(¢‡Œşÿÿÿÿ8Ë‘¡ ã1
+Gkotlin:S18747"#Deprecated code should not be used.(¼âáşÿÿÿÿ8ğªÖ ã1
+Gkotlin:S1874`"#Deprecated code should not be used.(¬ğıßûÿÿÿÿ8¼°° ã1
+Gkotlin:S1874a"#Deprecated code should not be used.(µÉ«ùÿÿÿÿ8ñªÖ ã1
