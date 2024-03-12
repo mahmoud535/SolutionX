@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLightGrey"
-    tools:context=".presentation.activity.ListActivity">
+    tools:context=".features.singleclick.presentation.ui.activity.list.ListActivity">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerSingleSelection"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".presentation.activity.MainActivity">
+    tools:context=".presentation.ui.activity.main.MainActivity">
 
     <com.google.android.material.textview.MaterialTextView
         style="@style/TextView.Bold"
