@@ -1,6 +1,4 @@
 
-Bkotlin:S125
-"Remove this commented out code.(¤¤À•øÿÿÿÿ8ÃÊÓœã1
->kotlin:S1128"Remove this unused import.(èãÊõûÿÿÿÿ8ÅÊÓœã1
->kotlin:S1128"Remove this unused import.(ŞŠ‹Ùüÿÿÿÿ8ÅÊÓœã1
->kotlin:S1128"Remove this unused import.(¢‡Œşÿÿÿÿ8ÆÊÓœã1
+;kotlin:S6310"Avoid hardcoded dispatchers.(Ô¥‚ü8áö°ã1
+;kotlin:S6310!"Avoid hardcoded dispatchers.(Ô¥‚ü8áö°ã1
+@kotlin:S6310."Avoid hardcoded dispatchers.(ÓŞ†Æúÿÿÿÿ8áö°ã1

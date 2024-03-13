@@ -5,7 +5,9 @@ import com.example.solutionx.features.login.data.local.UserDao
 import com.example.solutionx.features.login.data.local.UserDatabase
 import com.example.solutionx.features.login.data.mapper.UserMapper
 import com.example.solutionx.features.login.data.remote.ServiceApi
-import com.example.solutionx.features.login.data.repositoryimp.AuthRepositoryImpl
+import com.example.solutionx.features.login.data.repositoryimp.local.LocalRepositoryImp
+import com.example.solutionx.features.login.data.repositoryimp.remote.RemoteRepositoryImp
+import com.example.solutionx.features.login.domain.repository.local.LocalRepo
 import com.example.solutionx.features.login.domain.repository.remote.RemoteRepo
 import com.example.solutionx.features.singleclick.data.repositoryimp.LanguageRepositoryImp
 import com.example.solutionx.features.singleclick.domain.repository.LanguageRepository
@@ -58,15 +60,15 @@ object AppModule {
     }
 
 
-    @Singleton
-    @Provides
-    fun provideAuthRepository(
-        remoteDataSource: ServiceApi,
-        localDataSource: UserDatabase,
-        userMapper: UserMapper
-    ): RemoteRepo {
-        return AuthRepositoryImpl(remoteDataSource, localDataSource, userMapper)
-    }
+//    @Singleton
+//    @Provides
+//    fun provideAuthRepository(
+//        remoteDataSource: ServiceApi,
+//        localDataSource: UserDatabase,
+//        userMapper: UserMapper
+//    ): RemoteRepo {
+//        return AuthRepositoryImpl(remoteDataSource, localDataSource, userMapper)
+//    }
 
 
 
@@ -74,6 +76,18 @@ object AppModule {
     @Provides
     fun provideUserMapper(): UserMapper {
         return UserMapper()
+    }
+
+    @Singleton
+    @Provides
+    fun provideRemoteDataSource(remoteService: ServiceApi, localDataSource: UserDatabase, userMapper: UserMapper): RemoteRepo {
+        return RemoteRepositoryImp(remoteService, localDataSource, userMapper)
+    }
+
+    @Singleton
+    @Provides
+    fun provideLocalDataSource(userDao: UserDatabase, userMapper: UserMapper): LocalRepo {
+        return LocalRepositoryImp(userDao, userMapper)
     }
 
 }

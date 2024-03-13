@@ -1,13 +1,14 @@
 package com.example.solutionx.features.login.data.mapper
 
+import com.example.solutionx.features.login.data.model.UserEntity
 import com.example.solutionx.features.login.domain.model.User
 
 class UserMapper {
-    fun mapDtoToDomain(dto: User): User {
-        return User(dto.id, dto.username, dto.email, dto.phoneNumber)
+    fun mapDtoToDomain(userEntity: UserEntity): User {
+        return User(userEntity.id, userEntity.username, userEntity.email, userEntity.phoneNumber)
     }
 
-    fun mapDomainToEntity(user: User): User {
-        return User(user.id, user.username, user.email, user.phoneNumber)
+    fun mapDomainToEntity(userDto: User): User {
+        return User(userDto.id, userDto.username, userDto.email, userDto.phoneNumber)
     }
 }
