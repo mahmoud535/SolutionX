@@ -56,9 +56,6 @@ class LoginActivity : AppCompatActivity() {
     private fun observeViewState() {
         GlobalScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-//                viewModel.user.collect { user ->
-//
-//                }
                 viewModel.viewState.collect { state ->
                     renderState(state)
                 }

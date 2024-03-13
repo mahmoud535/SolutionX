@@ -20,28 +20,6 @@ class LoginViewModel @Inject constructor(
 ) : ViewModel() {
 
 
-    private val _user = MutableStateFlow<User?>(null)
-    val user: StateFlow<User?> = _user
-
-    fun loginWithEmail(email: String, password: String) {
-      viewModelScope.launch {
-          _user.emit(loginWithEmailUC(email, password))
-      }
-    }
-
-    fun loginWithPhone(phone: String, password: String) {
-        viewModelScope.launch {
-            _user.emit(loginWithPhoneUC(phone,password))
-        }
-    }
-
-    fun loginWithSocial(token: String) {
-        viewModelScope.launch {
-            _user.emit(loginWithSocialUC(token))
-        }
-    }
-
-
     private val _viewState = MutableStateFlow<LoginViewState>(LoginViewState.Loading)
     val viewState: StateFlow<LoginViewState> = _viewState
 
