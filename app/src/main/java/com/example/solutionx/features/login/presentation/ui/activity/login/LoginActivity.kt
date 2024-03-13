@@ -10,11 +10,14 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.solutionx.databinding.ActivityLoginBinding
 import com.example.solutionx.features.singleclick.presentation.ui.activity.list.ListActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 //import dagger.hilt.android.AndroidEntryPoint
@@ -44,17 +47,34 @@ class LoginActivity : AppCompatActivity() {
 
         loadLocate()
         listener()
-        observeApiUserLogin()
+        observeViewState()
 
 
     }
 
 
+    private fun observeViewState() {
+        GlobalScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.viewState.collect { state ->
+                    renderState(state)
+                }
+            }
+        }
+    }
 
-    private fun observeApiUserLogin() {
-        lifecycleScope.launchWhenStarted {
-            viewModel.user.collect { user ->
+    private fun renderState(state: LoginViewState) {
+        when (state) {
+            is LoginViewState.UserLoggedIn -> {
 
+            }
+
+            LoginViewState.Loading -> {
+
+            }
+
+            is LoginViewState.Error -> {
+//                Toast.makeText(this@LoginActivity, state.message, Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -66,6 +86,10 @@ class LoginActivity : AppCompatActivity() {
 //            viewModelLanguage.showChangeLanguagesDialog(this@LoginActivity)
         }
         binding.btnLogin.setOnClickListener {
+            val email = binding.etEmailClient.text.toString()
+            val password = binding.etPassword.text.toString()
+            viewModel.processIntent(LoginIntent.LoginWithEmail(email, password))
+
             val intent = Intent(this, ListActivity::class.java)
             startActivity(intent)
         }

@@ -19,24 +19,31 @@ class LoginViewModel @Inject constructor(
     private val loginWithSocialUC: LoginWithSocialUC
 ) : ViewModel() {
 
-    private val _user = MutableStateFlow<User?>(null)
-    val user: StateFlow<User?> = _user
 
-    fun loginWithEmail(email: String, password: String) {
-      viewModelScope.launch {
-          _user.value = loginWithEmailUC(email, password)
-      }
-    }
+    private val _viewState = MutableStateFlow<LoginViewState>(LoginViewState.Loading)
+    val viewState: StateFlow<LoginViewState> = _viewState
 
-    fun loginWithPhone(phone: String, password: String) {
+    fun processIntent(intent: LoginIntent) {
         viewModelScope.launch {
-            _user.value = loginWithPhoneUC(phone,password)
-        }
-    }
-
-    fun loginWithSocial(token: String) {
-        viewModelScope.launch {
-            _user.value = loginWithSocialUC(token)
+            _viewState.emit(LoginViewState.Loading)
+            try {
+                when (intent) {
+                    is LoginIntent.LoginWithEmail -> {
+                        val user = loginWithEmailUC(intent.email, intent.password)
+                        _viewState.emit(LoginViewState.UserLoggedIn(user))
+                    }
+                    is LoginIntent.LoginWithPhone -> {
+                        val user = loginWithPhoneUC(intent.phone, intent.password)
+                        _viewState.emit(LoginViewState.UserLoggedIn(user))
+                    }
+                    is LoginIntent.LoginWithSocial -> {
+                        val user = loginWithSocialUC(intent.token)
+                        _viewState.emit(LoginViewState.UserLoggedIn(user))
+                    }
+                }
+            } catch (e: Exception) {
+                _viewState.emit(LoginViewState.Error(e.message ?: "Unknown error"))
+            }
         }
     }
 }
