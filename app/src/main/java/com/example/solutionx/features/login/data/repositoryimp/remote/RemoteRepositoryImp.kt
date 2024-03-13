@@ -15,13 +15,10 @@ class RemoteRepositoryImp @Inject constructor(
 ) : RemoteRepo {
     override suspend fun loginWithEmail(email: String, password: String) =
         withContext(Dispatchers.IO) {
-            api.loginWithEmail(email, password)
-
             val userDto = api.loginWithEmail(email, password)
             if (userDto.isSuccessful) {
                 val loginResponse = userDto.body()
-                val userDto = loginResponse
-                val user = userMapper.mapDtoToDomain(userDto!!)
+                val user = userMapper.mapDtoToDomain(loginResponse!!)
                 localDataSource.userDao().saveUser(userMapper.mapDomainToEntity(user))
                 return@withContext user
             } else {
@@ -34,8 +31,7 @@ class RemoteRepositoryImp @Inject constructor(
             val response = api.loginWithPhone(phone, password)
             if (response.isSuccessful) {
                 val loginResponse = response.body()
-                val userDto = loginResponse
-                val user = userMapper.mapDtoToDomain(userDto!!)
+                val user = userMapper.mapDtoToDomain(loginResponse!!)
                 localDataSource.userDao().saveUser(userMapper.mapDomainToEntity(user))
                 return@withContext user
             } else {
@@ -47,8 +43,7 @@ class RemoteRepositoryImp @Inject constructor(
         val response = api.loginWithSocial(token)
         if (response.isSuccessful) {
             val loginResponse = response.body()
-            val userDto = loginResponse
-            val user = userMapper.mapDtoToDomain(userDto!!)
+            val user = userMapper.mapDtoToDomain(loginResponse!!)
             localDataSource.userDao().saveUser(userMapper.mapDomainToEntity(user))
             return@withContext user
         } else {

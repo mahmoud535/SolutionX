@@ -33,8 +33,6 @@ Sapp/src/main/java/com/example/solutionx/features/login/presentation/di/AppModul
 _app/src/main/java/com/example/solutionx/features/login/data/repositoryimp/AuthRepositoryImpl.kt,a\9\a90030ae15a2615acc7895e847dd4cb426f248c2
 ç
 ]app/src/main/java/com/example/solutionx/features/login/domain/repository/remote/RemoteRepo.kt,e\4\e428e35d5578763f77e05a7d288f1cc73168bcb4
-Ñ
-Tapp/src/main/java/com/example/solutionx/features/login/domain/model/LoginResponse.kt,9\d\9df72abbff58867eadd9bad5b9b3d5b80dd38361
 {
 Kapp/src/main/java/com/example/solutionx/features/login/domain/model/User.kt,b\c\bce27ff1b806cf80072b06fbfa76429acae3316e
 Ä
@@ -61,8 +59,6 @@ happ/src/main/java/com/example/solutionx/features/singleclick/data/repositoryimp
 dapp/src/main/java/com/example/solutionx/features/singleclick/domain/repository/LanguageRepository.kt,3\d\3d245931d5266e85c2dad93339b23b361bd1e4db
 ñ
 fapp/src/main/java/com/example/solutionx/features/login/presentation/ui/activity/login/LoginActivity.kt,3\9\3987891e3c6dc791d0c4519dfd4bd7fbcf62a7e3
-è
-_app/src/main/java/com/example/solutionx/features/login/presentation/ui/activity/login/Result.kt,1\6\165d4a5a3902f57734fbc44a61d5f353800fd143
 ï
 eapp/src/main/java/com/example/solutionx/features/login/data/repositoryimp/local/localRepositoryImp.kt,f\b\fb8ae32f772dc8295103b2c6ea6083e3dc2d5ae9
 |
