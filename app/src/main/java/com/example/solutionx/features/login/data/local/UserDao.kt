@@ -4,13 +4,14 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.solutionx.features.login.data.model.UserEntity
 import com.example.solutionx.features.login.domain.model.User
 
 @Dao
 interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveUser(user: User)
+    suspend fun saveUser(user: UserEntity)
 
     @Query("select * from user_table")
-    suspend fun getUser(): User?
+    suspend fun getUser(): UserEntity?
 }

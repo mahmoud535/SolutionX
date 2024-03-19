@@ -1,4 +1,4 @@
-package com.example.solutionx.features.singleclick.presentation.ui.activity.list
+package com.example.solutionx.features.singleclick.presentation.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.solutionx.databinding.ListItemsBinding
+import com.example.solutionx.features.singleclick.domain.SingleItem
 
 @SuppressLint("NotifyDataSetChanged")
 class CustomAdapter(

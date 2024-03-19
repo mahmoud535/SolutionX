@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         logger.info("This is an info log....")
         logger.warning("This is a warning log....")
         logger.error("This is an error log....")
-        logger.error("This is an error log with throwable....", Throwable("Exception....."))
+        logger.error("This is an error log with throwable....", Throwable("CustomException....."))
 
         val logger = LoggerProvider.getLogger()
         logger.log("Hello from ${BuildConfig.FLAVOR} flavor!")

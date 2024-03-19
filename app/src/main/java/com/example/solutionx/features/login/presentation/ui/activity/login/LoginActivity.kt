@@ -89,7 +89,6 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.etEmailClient.text.toString()
             val password = binding.etPassword.text.toString()
             viewModel.processIntent(LoginIntent.LoginWithEmail(email, password))
-
             val intent = Intent(this, ListActivity::class.java)
             startActivity(intent)
         }

@@ -10,7 +10,10 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.solutionx.R
 import com.example.solutionx.databinding.ActivityListBinding
+import com.example.solutionx.features.singleclick.domain.SingleItem
 import com.example.solutionx.features.singleclick.domain.model.DataModel
+import com.example.solutionx.features.singleclick.presentation.adapter.CustomAdapter
+import com.example.solutionx.features.singleclick.presentation.adapter.OnListItemClick
 
 class ListActivity : AppCompatActivity(), OnListItemClick {
     private lateinit var binding: ActivityListBinding

@@ -1,6 +1,6 @@
 package com.example.solutionx.features.singleclick.domain.model
 
-import com.example.solutionx.features.singleclick.presentation.ui.activity.list.SingleItem
+import com.example.solutionx.features.singleclick.domain.SingleItem
 
 //@Parcelize
 data class Filter(

@@ -1,4 +1,4 @@
-package com.example.solutionx.features.singleclick.presentation.ui.activity.list
+package com.example.solutionx.features.singleclick.domain
 
 interface SingleItem {
     val id: Int

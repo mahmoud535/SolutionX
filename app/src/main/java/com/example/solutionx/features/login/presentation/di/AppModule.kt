@@ -5,10 +5,13 @@ import com.example.solutionx.features.login.data.local.UserDao
 import com.example.solutionx.features.login.data.local.UserDatabase
 import com.example.solutionx.features.login.data.mapper.UserMapper
 import com.example.solutionx.features.login.data.remote.ServiceApi
+import com.example.solutionx.features.login.data.repositoryimp.AuthRepositoryImpl
 import com.example.solutionx.features.login.data.repositoryimp.local.LocalRepositoryImp
 import com.example.solutionx.features.login.data.repositoryimp.remote.RemoteRepositoryImp
+import com.example.solutionx.features.login.domain.repository.LoginRepository
 import com.example.solutionx.features.login.domain.repository.local.LocalRepo
 import com.example.solutionx.features.login.domain.repository.remote.RemoteRepo
+import com.example.solutionx.features.login.presentation.util.Constants
 import com.example.solutionx.features.singleclick.data.repositoryimp.LanguageRepositoryImp
 import com.example.solutionx.features.singleclick.domain.repository.LanguageRepository
 import dagger.Module
@@ -24,12 +27,11 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    private const val BaseUrl = "https://my-json-server.typicode.com/"
     @Singleton
     @Provides
     fun getRetroBuilder(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BaseUrl)
+            .baseUrl(Constants.baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
@@ -60,34 +62,33 @@ object AppModule {
     }
 
 
-//    @Singleton
-//    @Provides
-//    fun provideAuthRepository(
-//        remoteDataSource: ServiceApi,
-//        localDataSource: UserDatabase,
-//        userMapper: UserMapper
-//    ): RemoteRepo {
-//        return AuthRepositoryImpl(remoteDataSource, localDataSource, userMapper)
-//    }
+    @Singleton
+    @Provides
+    fun provideAuthRepository(
+        remoteDataSource: ServiceApi,
+        localDataSource: UserDao
+    ): LoginRepository {
+        return AuthRepositoryImpl(remoteDataSource, localDataSource)
+    }
 
 
 
     @Singleton
     @Provides
     fun provideUserMapper(): UserMapper {
-        return UserMapper()
+        return UserMapper
     }
 
     @Singleton
     @Provides
-    fun provideRemoteDataSource(remoteService: ServiceApi, localDataSource: UserDatabase, userMapper: UserMapper): RemoteRepo {
-        return RemoteRepositoryImp(remoteService, localDataSource, userMapper)
+    fun provideRemoteDataSource(): RemoteRepo {
+        return RemoteRepositoryImp()
     }
 
     @Singleton
     @Provides
-    fun provideLocalDataSource(userDao: UserDatabase, userMapper: UserMapper): LocalRepo {
-        return LocalRepositoryImp(userDao, userMapper)
+    fun provideLocalDataSource(userDao: UserDao): LocalRepo {
+        return LocalRepositoryImp(userDao)
     }
 
 }

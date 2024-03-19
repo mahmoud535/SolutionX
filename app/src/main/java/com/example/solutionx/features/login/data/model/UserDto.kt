@@ -1,6 +1,11 @@
 package com.example.solutionx.features.login.data.model
 
-data class UserDto(  val id: Int,
-                     val username: String,
-                     val email: String?,
-                     val phoneNumber: String?,)
+import com.google.gson.annotations.SerializedName
+
+data class UserDto(
+    val id: Int,
+    @SerializedName("username")
+    val username: String,
+    val email: String?,
+    val phoneNumber: String?,
+)
