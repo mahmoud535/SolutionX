@@ -2,10 +2,9 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 //    id("kotlin-parcelize")
-    kotlin("kapt")
+//    kotlin("kapt")
+    id ("kotlin-kapt")
     id("com.google.dagger.hilt.android")
-
-//    id ("androidx.room")
 }
 
 android {
@@ -16,7 +15,7 @@ android {
     defaultConfig {
         applicationId = "com.example.solutionx"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -92,7 +91,7 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics-buildtools:2.9.9")
     implementation("androidx.room:room-common:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
-    implementation("com.google.android.ads:mediation-test-suite:3.0.0")
+//    implementation("com.google.android.ads:mediation-test-suite:3.0.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

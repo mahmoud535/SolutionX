@@ -33,7 +33,9 @@
 
         <activity
             android:name=".presentation.ui.activity.main.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+
+        </activity>
 
     </application>
 </manifest>
