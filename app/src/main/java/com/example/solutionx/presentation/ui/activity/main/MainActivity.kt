@@ -1,6 +1,6 @@
 package com.example.solutionx.presentation.ui.activity.main
 
-import am.leon.solutionx.android.helpers.logging.getClassLogger
+import com.example.solutionx.android.helpers.logging.getClassLogger
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -8,7 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.solutionx.BuildConfig
 import com.example.solutionx.R
-import com.example.solutionx.features.singleclick.presentation.productflavors.LoggerProvider
+import com.example.solutionx.features.services.presentation.productflavors.LoggerProvider
 import dagger.hilt.android.AndroidEntryPoint
 
 //import dagger.hilt.android.AndroidEntryPoint

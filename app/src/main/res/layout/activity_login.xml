@@ -23,7 +23,7 @@
         android:id="@+id/et_email_Client"
         style="@style/EditText"
         android:hint="@string/email"
-        android:inputType="textEmailAddress"
+        android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
