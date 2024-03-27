@@ -213,3 +213,5 @@ Yapp/src/main/java/com/example/solutionx/common/domain/repository/loca/ILocalDSP
 Wapp/src/main/java/com/example/solutionx/common/data/repository/local/LocalDsProvider.kt,9\8\985e2b220c6adae05adcd215ae53644cc7b33f99
 ’
 bapp/src/main/java/com/example/solutionx/features/authentication/login/domain/model/LoginRequest.kt,1\3\134c0bd064ccffcb4a332dbcfee6420e13f5f174
+¢
+rapp/src/main/java/com/example/solutionx/features/authentication/login/presentation/ui/activity/login/LoginState.kt,4\8\48c1a225c5a90cfbe01a18fec9a26bd048577233

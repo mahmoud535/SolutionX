@@ -2,6 +2,7 @@ package com.example.solutionx.features.authentication.login.presentation.ui.acti
 
 sealed class LoginIntent {
     data class LoginWithEmail(val email: String, val password: String) : LoginIntent()
-    data class LoginWithPhone(val phone: Phone) : LoginIntent()
+    data class LoginWithPhone(val phoneNumber: String, val countryCode: String, val password: String) : LoginIntent()
+
     data class LoginWithSocial(val token: String) : LoginIntent()
 }

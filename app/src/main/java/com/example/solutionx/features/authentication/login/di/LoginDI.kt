@@ -22,6 +22,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -36,7 +37,6 @@ internal object LoginDI {
 
 
     //Retrofit
-    @Singleton
     @Provides
     fun getRetroBuilder(): Retrofit {
         return Retrofit.Builder()
@@ -55,13 +55,12 @@ internal object LoginDI {
     }
 
     @Provides
-    @Singleton
+    @ViewModelScoped
     fun provideServiceApi(retrofit: Retrofit): ServiceApi {
         return retrofit.create(ServiceApi::class.java)
     }
 
     @Provides
-    @Singleton
     fun provideRestApiNetworkProvider(serviceApi: ServiceApi): IRestApiNetworkProvider {
         return RestApiNetworkProvider(serviceApi)
     }

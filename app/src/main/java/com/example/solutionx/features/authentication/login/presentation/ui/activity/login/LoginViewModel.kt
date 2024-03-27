@@ -6,6 +6,7 @@ import com.example.solutionx.common.data.model.Resource
 import com.example.solutionx.features.authentication.login.domain.interactor.login.LoginWithEmailUC
 import com.example.solutionx.features.authentication.login.domain.interactor.login.LoginWithPhoneUC
 import com.example.solutionx.features.authentication.login.domain.interactor.login.LoginWithSocialUC
+import com.example.solutionx.features.authentication.login.domain.model.LoginRequest
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,53 +21,72 @@ class LoginViewModel @Inject constructor(
     private val loginWithSocialUC: LoginWithSocialUC,
 ) : ViewModel() {
 
-    private val _viewState = MutableStateFlow<LoginViewState>(LoginViewState.Loading)
-    val viewState: StateFlow<LoginViewState> = _viewState
+    private val _viewState = MutableStateFlow<LoginState>(LoginState.Loading)
+    val viewState: StateFlow<LoginState> = _viewState
 
     fun processLoginIntent(intent: LoginIntent) {
         when (intent) {
-            is LoginIntent.LoginWithEmail -> loginWithEmail(intent.email, intent.password)
-            is LoginIntent.LoginWithPhone -> loginWithPhone(intent.phone)
-            is LoginIntent.LoginWithSocial -> loginWithSocial(intent.token)
+            is LoginIntent.LoginWithEmail -> TODO()
+            is LoginIntent.LoginWithPhone -> loginWithPhone(intent.phoneNumber,intent.countryCode,intent.password)
+            is LoginIntent.LoginWithSocial -> TODO()
 
         }
     }
 
-    private fun loginWithEmail(email: String, password: String) {
+//    private fun loginWithEmail(email: String, password: String) {
+//        viewModelScope.launch {
+//            loginWithEmailUC.invoke(viewModelScope, email, password) { resource ->
+//                when (resource) {
+//                    is Resource.Progress -> _viewState.update { LoginViewState.Loading }
+//                    is Resource.Success -> _viewState.update { LoginViewState.UserLoggedIn(resource.model.user) }
+//                    is Resource.Failure -> _viewState.update { LoginViewState.Error(resource.exception.message ?: "error in login") }
+//                }
+//            }
+//        }
+//    }
+
+//    private fun loginWithPhone() {
+//        viewModelScope.launch {
+//            val loginRequest = LoginRequest(
+//                _viewState.value.countryCode,
+//                _viewState.value.phoneNumber,
+//                _viewState.value.password
+//            )
+//            loginWithPhoneUC.invoke(viewModelScope, loginRequest) { resource ->
+//                when (resource) {
+//                    is Resource.Progress -> _viewState.update { it.copy(isLoading = true)}
+//                    is Resource.Success -> {
+//                        _viewState.update { it.copy(userInfo = resource.model!!.toUserState())  } }
+//                    is Resource.Failure -> _viewState.update { it.copy(isError = true) }
+//                }
+//            }
+//        }
+//    }
+
+    private fun loginWithPhone(phoneNumber: String, countryCode: String, password: String) {
         viewModelScope.launch {
-            loginWithEmailUC.invoke(viewModelScope, email, password) { resource ->
+            val loginRequest = LoginRequest(countryCode, phoneNumber, password)
+            loginWithPhoneUC.invoke(viewModelScope, loginRequest) { resource ->
                 when (resource) {
-                    is Resource.Progress -> _viewState.update { LoginViewState.Loading }
-                    is Resource.Success -> _viewState.update { LoginViewState.UserLoggedIn(resource.model.user) }
-                    is Resource.Failure -> _viewState.update { LoginViewState.Error(resource.exception.message ?: "error in login") }
+                    is Resource.Progress -> _viewState.update {LoginState.Loading }
+                    is Resource.Success -> _viewState.update { LoginState.Success(resource.model) }
+                    is Resource.Failure -> _viewState.update { LoginState.Error(resource.exception.message ?: "error in login") }
                 }
             }
         }
     }
 
-    private fun loginWithPhone(phoneNumber: Phone) {
-        viewModelScope.launch {
-            loginWithPhoneUC.invoke(viewModelScope, phoneNumber) { resource ->
-                when (resource) {
-                    is Resource.Progress -> _viewState.update { LoginViewState.Loading }
-                    is Resource.Success -> _viewState.update { LoginViewState.UserLoggedIn(resource.model.user) }
-                    is Resource.Failure -> _viewState.update { LoginViewState.Error(resource.exception.message ?: "error in login") }
-                }
-            }
-        }
-    }
-
-    private fun loginWithSocial(token: String) {
-        viewModelScope.launch {
-            loginWithSocialUC.invoke(viewModelScope, token) { resource ->
-                when (resource) {
-                    is Resource.Progress -> _viewState.update { LoginViewState.Loading }
-                    is Resource.Success -> _viewState.update { LoginViewState.UserLoggedIn(resource.model.user) }
-                    is Resource.Failure -> _viewState.update { LoginViewState.Error(resource.exception.message ?: "error in login") }
-                }
-            }
-        }
-    }
+//    private fun loginWithSocial(token: String) {
+//        viewModelScope.launch {
+//            loginWithSocialUC.invoke(viewModelScope, token) { resource ->
+//                when (resource) {
+//                    is Resource.Progress -> _viewState.update { LoginViewState.Loading }
+//                    is Resource.Success -> _viewState.update { LoginViewState.UserLoggedIn(resource.model.user) }
+//                    is Resource.Failure -> _viewState.update { LoginViewState.Error(resource.exception.message ?: "error in login") }
+//                }
+//            }
+//        }
+//    }
 
 
 

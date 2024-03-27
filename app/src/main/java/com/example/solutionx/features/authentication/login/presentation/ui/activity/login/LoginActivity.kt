@@ -66,30 +66,30 @@ class LoginActivity : AppCompatActivity() {
         GlobalScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.viewState.collect { state ->
-                    renderState(state)
+//                    renderState(state)
                 }
             }
         }
     }
 
-    private fun renderState(state: LoginViewState) {
-        when (state) {
-            is LoginViewState.UserLoggedIn -> {
-                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                finish()
-            }
-
-            LoginViewState.Loading -> {
-
-            }
-
-            is LoginViewState.Error -> {
-                GlobalScope.launch(Dispatchers.Main) {
-                    Toast.makeText(this@LoginActivity, state.message, Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
+//    private fun renderState(state: LoginState) {
+//        when (state) {
+//            is LoginState.UserLoggedIn -> {
+//                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+//                finish()
+//            }
+//
+//           is LoginState.Loading -> {
+//
+//            }
+//
+//            is LoginState.Error -> {
+//                GlobalScope.launch(Dispatchers.Main) {
+//                    Toast.makeText(this@LoginActivity, state.message, Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//        }
+//    }
 
 
     private fun listener() {
@@ -98,8 +98,8 @@ class LoginActivity : AppCompatActivity() {
         }
         binding.btnLogin.setOnClickListener {
             val phoneNumber = binding.etEmailClient.text.toString()
-            val phone = Phone(number = phoneNumber)
-            viewModel.processLoginIntent(LoginIntent.LoginWithPhone(phone))
+            val password = binding.etPassword.text.toString()
+            viewModel.processLoginIntent(LoginIntent.LoginWithPhone(phoneNumber," ",password))
         }
     }
 
