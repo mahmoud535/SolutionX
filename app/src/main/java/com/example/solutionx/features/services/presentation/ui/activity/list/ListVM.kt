@@ -1,10 +1,8 @@
 package com.example.solutionx.features.services.presentation.ui.activity.list
 
-import am.leon.solutionx.common.presentation.SolutionXViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.solutionx.common.data.model.Resource
-import com.example.solutionx.features.authentication.login.presentation.ui.activity.login.LoginViewState
 import com.example.solutionx.features.services.country.domain.interactor.GetCountriesUC
 import com.example.solutionx.features.services.currency.domain.interactor.GetCurrenciesUC
 import com.example.solutionx.features.services.filter.domain.interactor.GetFilterUC

@@ -37,9 +37,9 @@ class LoginViewModel @Inject constructor(
 //        viewModelScope.launch {
 //            loginWithEmailUC.invoke(viewModelScope, email, password) { resource ->
 //                when (resource) {
-//                    is Resource.Progress -> _viewState.update { LoginViewState.Loading }
-//                    is Resource.Success -> _viewState.update { LoginViewState.UserLoggedIn(resource.model.user) }
-//                    is Resource.Failure -> _viewState.update { LoginViewState.Error(resource.exception.message ?: "error in login") }
+//                    is Resource.Progress -> _viewState.update { LoginState.Loading }
+//                    is Resource.Success -> _viewState.update { LoginState.UserLoggedIn(resource.model.user) }
+//                    is Resource.Failure -> _viewState.update { LoginState.Error(resource.exception.message ?: "error in login") }
 //                }
 //            }
 //        }
@@ -80,9 +80,9 @@ class LoginViewModel @Inject constructor(
 //        viewModelScope.launch {
 //            loginWithSocialUC.invoke(viewModelScope, token) { resource ->
 //                when (resource) {
-//                    is Resource.Progress -> _viewState.update { LoginViewState.Loading }
-//                    is Resource.Success -> _viewState.update { LoginViewState.UserLoggedIn(resource.model.user) }
-//                    is Resource.Failure -> _viewState.update { LoginViewState.Error(resource.exception.message ?: "error in login") }
+//                    is Resource.Progress -> _viewState.update { LoginState.Loading }
+//                    is Resource.Success -> _viewState.update { LoginState.UserLoggedIn(resource.model.user) }
+//                    is Resource.Failure -> _viewState.update { LoginState.Error(resource.exception.message ?: "error in login") }
 //                }
 //            }
 //        }

@@ -46,7 +46,7 @@ internal class LocalDsProvider(private val context: Context) : ILocalDSProvider 
                 preferences[intPreferencesKey(key)] ?:
                 preferences[longPreferencesKey(key)] ?:
                 preferences[floatPreferencesKey(key)]
-            }.firstOrNull() as T? ?: throw IllegalStateException("Value for key $key not found")
+            }.firstOrNull() as T? ?: throw IllegalStateException("the key $key not found")
         } catch (e: Throwable) {
             null
         }
