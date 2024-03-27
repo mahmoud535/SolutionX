@@ -11,8 +11,10 @@ internal class LoginRemoteDS @Inject constructor(private val api: IRestApiNetwor
 //    override suspend fun loginWithEmail(email: String, password: String): LoginDto =
 //        api.loginWithEmail(email, password)
 
-    override suspend fun loginWithPhone(phone: Phone): LoginDto =
-         api.post( phone)
+    override suspend fun loginWithPhone(phone: Phone): LoginDto {
+        val body = hashMapOf("phone" to phone)
+        return api.post(body)
+    }
 
 //    override suspend fun loginWithSocial(token: String): LoginDto =
 //        api.loginWithSocial(token)

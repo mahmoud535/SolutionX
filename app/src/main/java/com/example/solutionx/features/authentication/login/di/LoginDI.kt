@@ -33,22 +33,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 internal object LoginDI {
 
-    @Provides
-    @Singleton
-    fun provideGson(): Gson {
-        return Gson()
-    }
 
-    @Provides
-    @Singleton
-    fun provideUserPreferences(@ApplicationContext context: Context,gson: Gson): UserPreferences =
-        UserPreferences(context,gson)
-
-    // Provide UserPreferences lazily
-    @Provides
-    @Singleton
-    fun provideLazyUserPreferences(userPreferences: UserPreferences): Lazy<UserPreferences> =
-        lazy { userPreferences }
 
     //Retrofit
     @Singleton
