@@ -15,9 +15,9 @@ internal interface ServiceApi {
 
     @POST("api/login")
     suspend fun loginWithPhone(
-        @Query("country_code") countryCode: String,
-        @Query("number") number: String,
-        @Query("password") password: String
+        countryCode: String,
+        number: String,
+        password: String
     ): LoginDto
 
 //    @GET("loginWithSocial")
