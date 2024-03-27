@@ -2,7 +2,6 @@ package com.example.solutionx.features.authentication.login.data.repository
 
 
 import com.example.solutionx.features.authentication.login.data.mapper.LoginMapper
-import com.example.solutionx.features.authentication.login.domain.model.Phone
 import com.example.solutionx.features.authentication.login.data.model.entity.UserEntity
 import com.example.solutionx.features.authentication.login.domain.model.Login
 import com.example.solutionx.features.authentication.login.domain.repository.ILoginRepository
@@ -18,21 +17,15 @@ internal class LoginRepository  @Inject constructor(
     private val localDs: ILoginLocalDS,
 ) : ILoginRepository {
 
-//    override suspend fun loginWithEmail(email: String, password: String): Login {
-//      val result =  remoteDs.loginWithEmail(email, password)
-//        return LoginMapper.dtoToDomain(result)
-//    }
 
 
-    override suspend fun loginWithPhone(phone: Phone): Login {
-       val result = remoteDs.loginWithPhone(phone)
+    override suspend fun loginWithPhone(countryCode: String,
+                                        phone: String,
+                                        password: String): Login {
+       val result = remoteDs.loginWithPhone(countryCode,phone,password)
         return LoginMapper.dtoToDomain(result)
     }
 
-//    override suspend fun loginWithSocial(token: String): Login {
-//        val result = remoteDs.loginWithSocial(token)
-//        return LoginMapper.dtoToDomain(result)
-//    }
 
 
     override suspend fun saveUser(login: Login) {

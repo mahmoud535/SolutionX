@@ -9,7 +9,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.solutionx.databinding.ActivityLoginBinding
-import com.example.solutionx.features.authentication.login.domain.model.Phone
 import com.example.solutionx.presentation.ui.activity.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers

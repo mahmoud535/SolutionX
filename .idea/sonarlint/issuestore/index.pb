@@ -211,3 +211,5 @@ _app/src/main/java/com/example/solutionx/common/data/repository/remote/RestApiNe
 Yapp/src/main/java/com/example/solutionx/common/domain/repository/loca/ILocalDSProvider.kt,f\9\f9b171d3556dc7433f176dd95ea2a108802ae7b3
 ‡
 Wapp/src/main/java/com/example/solutionx/common/data/repository/local/LocalDsProvider.kt,9\8\985e2b220c6adae05adcd215ae53644cc7b33f99
+’
+bapp/src/main/java/com/example/solutionx/features/authentication/login/domain/model/LoginRequest.kt,1\3\134c0bd064ccffcb4a332dbcfee6420e13f5f174

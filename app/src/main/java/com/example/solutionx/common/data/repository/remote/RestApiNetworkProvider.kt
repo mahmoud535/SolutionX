@@ -16,11 +16,9 @@ internal class RestApiNetworkProvider  @Inject constructor(private val serviceAp
     }
 
     override suspend fun <T> post(body: Map<String, Any>): T {
-        val response = serviceApi.loginWithPhone(body)
-        if (response.body() == null) {
-            throw IllegalStateException("Response body is null")
-        }
-        return response.body() as T
+//        val response = serviceApi.loginWithPhone(body)
+//        return response as T
+        TODO("Not yet implemented")
     }
 
     override suspend fun <T> put(

@@ -3,7 +3,6 @@ package com.example.solutionx.features.authentication.login.presentation.ui.acti
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.solutionx.common.data.model.Resource
-import com.example.solutionx.features.authentication.login.domain.model.Phone
 import com.example.solutionx.features.authentication.login.domain.interactor.login.LoginWithEmailUC
 import com.example.solutionx.features.authentication.login.domain.interactor.login.LoginWithPhoneUC
 import com.example.solutionx.features.authentication.login.domain.interactor.login.LoginWithSocialUC

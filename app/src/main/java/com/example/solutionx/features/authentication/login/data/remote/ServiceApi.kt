@@ -10,12 +10,16 @@ import retrofit2.http.Query
 import retrofit2.http.QueryMap
 
 internal interface ServiceApi {
-    @POST("loginWithEmail")
-    suspend fun loginWithEmail(@Query("email")email: String,@Query("password") password: String): LoginDto
+//    @POST("loginWithEmail")
+//    suspend fun loginWithEmail(@Query("email")email: String,@Query("password") password: String): LoginDto
 
     @POST("api/login")
-    suspend fun loginWithPhone(@Body phone:Any): Response <LoginDto>
+    suspend fun loginWithPhone(
+        @Query("country_code") countryCode: String,
+        @Query("number") number: String,
+        @Query("password") password: String
+    ): LoginDto
 
-    @GET("loginWithSocial")
-    suspend fun loginWithSocial(@Query("token") token: String): LoginDto
+//    @GET("loginWithSocial")
+//    suspend fun loginWithSocial(@Query("token") token: String): LoginDto
 }

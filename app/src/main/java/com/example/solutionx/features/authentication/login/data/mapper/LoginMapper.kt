@@ -10,15 +10,13 @@ import com.example.solutionx.features.authentication.login.domain.model.Login
 internal object LoginMapper : Mapper<LoginDto, Login, LoginEntity>() {
     override fun dtoToDomain(model: LoginDto): Login {
         return Login(
-            message = model.message.orEmpty(),
             token = model.token.orEmpty(),
-            user = UserMapper.dtoToDomain(model.user ?: UserDto())
+            user = UserMapper.dtoToDomain(model.user!!)
         )
     }
 
     override fun domainToEntity(model: Login): LoginEntity {
         return LoginEntity(
-            message = model.message,
             token = model.token,
             user = UserMapper.domainToEntity(model.user)
         )

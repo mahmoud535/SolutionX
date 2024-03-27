@@ -30,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ViewModelComponent::class)
 internal object LoginDI {
 
 
@@ -67,7 +67,7 @@ internal object LoginDI {
     }
 
     @Provides
-    fun provideRemoteDS(api: IRestApiNetworkProvider): ILoginRemoteDS = LoginRemoteDS(api)
+    fun provideRemoteDS(api: ServiceApi): ILoginRemoteDS = LoginRemoteDS(api)
 
     @Provides
     fun provideLocalDS(userPreferences: UserPreferences): ILoginLocalDS = LoginLocalDS(userPreferences)

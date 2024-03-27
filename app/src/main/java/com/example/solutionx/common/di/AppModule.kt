@@ -1,6 +1,8 @@
 package com.example.solutionx.common.di
 
 import android.content.Context
+import com.example.solutionx.common.data.repository.local.LocalDsProvider
+import com.example.solutionx.common.domain.repository.loca.ILocalDSProvider
 import com.example.solutionx.features.authentication.login.data.local.UserPreferences
 import com.google.gson.Gson
 import dagger.Module
@@ -13,6 +15,13 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 internal object AppModule {
+
+    @Provides
+    @Singleton
+    fun provideLocalDSProvider(@ApplicationContext context: Context): ILocalDSProvider {
+        return LocalDsProvider(context)
+    }
+
     @Provides
     @Singleton
     fun provideContext(@ApplicationContext context: Context): Context = context

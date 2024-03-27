@@ -2,8 +2,8 @@ package com.example.solutionx.features.authentication.login.domain.interactor.lo
 
 import com.example.solutionx.common.data.model.Resource
 import com.example.solutionx.common.domain.BaseUseCase
-import com.example.solutionx.features.authentication.login.domain.model.Phone
 import com.example.solutionx.features.authentication.login.domain.model.Login
+import com.example.solutionx.features.authentication.login.domain.model.LoginRequest
 import com.example.solutionx.features.authentication.login.domain.repository.ILoginRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -13,37 +13,14 @@ import javax.inject.Inject
 class LoginWithPhoneUC  @Inject constructor(
     private val repository: ILoginRepository,
 ) {
-    operator fun invoke(scope: CoroutineScope, phoneNumber: Phone, onResult: (Resource<Login>) -> Unit){
-//        scope.launch(Dispatchers.Main) {
-//            onResult.invoke(Resource.loading())
-//            try {
-//                withContext(Dispatchers.IO){
-//                    val result = repository.loginWithPhone(phoneNumber)
-//                    repository.saveUser(result)
-//                    onResult.invoke(Resource.success(result))
-//                }
-//                withContext(Dispatchers.Main){
-//                    onResult.invoke(Resource.loading())
-//                }
-//            }catch (e: Exception){
-//                withContext(Dispatchers.IO){
-//                    val failureResource = if (e  is LeonException)
-//                        e
-//                    else
-//                        LeonException.Unknown(message = "Unknown error: $e")
-//
-//                    onResult.invoke(Resource.failure(failureResource))
-//                }
-//
-//                withContext(Dispatchers.Main){
-//                    onResult.invoke(Resource.loading(false))
-//                }
-//            }
-//        }
+    operator fun invoke(scope: CoroutineScope, loginRequest: LoginRequest, onResult: (Resource<Login>) -> Unit){
 
         scope.launch(Dispatchers.Main) {
             BaseUseCase.execute(scope, call = {
-                val result = repository.loginWithPhone(phoneNumber)
+                val result = repository.loginWithPhone(
+                    loginRequest.countryCode,
+                    loginRequest.phoneNumber,
+                    loginRequest.password)
                 repository.saveUser(result)
                 result
             }, onResult = onResult)

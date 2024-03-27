@@ -21,7 +21,9 @@ import kotlinx.coroutines.runBlocking
 internal class LocalDsProvider(private val context: Context) : ILocalDSProvider {
 
 
-    private val Context.preferencesDataStore: DataStore<Preferences> by preferencesDataStore(Constants.DS_File)
+    private val Context.preferencesDataStore: DataStore<Preferences> by preferencesDataStore(
+        Constants.DS_File
+    )
 
     override suspend fun <T> save(key: String, value: T) {
         val preferencesKey = stringPreferencesKey(key)
@@ -37,15 +39,17 @@ internal class LocalDsProvider(private val context: Context) : ILocalDSProvider 
     }
 
     override suspend fun <T> get(key: String): T? {
-         return try {
-             context.preferencesDataStore.data.map { preferences ->
-                 preferences[stringPreferencesKey(key)] ?: preferences[booleanPreferencesKey(key)]
-                 ?: preferences[intPreferencesKey(key)] ?: preferences[longPreferencesKey(key)]
-                 ?: preferences[floatPreferencesKey(key)]
-             }.firstOrNull()  as T? ?: throw IllegalStateException("Value for key $key not found")
-         } catch (e:Throwable){
-             null
-         }
+        return try {
+            context.preferencesDataStore.data.map { preferences ->
+                preferences[stringPreferencesKey(key)] ?:
+                preferences[booleanPreferencesKey(key)] ?:
+                preferences[intPreferencesKey(key)] ?:
+                preferences[longPreferencesKey(key)] ?:
+                preferences[floatPreferencesKey(key)]
+            }.firstOrNull() as T? ?: throw IllegalStateException("Value for key $key not found")
+        } catch (e: Throwable) {
+            null
+        }
     }
 
 }
