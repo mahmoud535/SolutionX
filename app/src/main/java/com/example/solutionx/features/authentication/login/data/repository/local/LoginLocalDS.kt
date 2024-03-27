@@ -15,7 +15,7 @@ internal class LoginLocalDS (private val userPreferences: UserPreferences): ILog
         return userPreferences.accessToken
     }
 
-    override suspend fun getUser():  Flow<UserEntity?> {
-        return userPreferences.getUser()
+    override suspend fun getUser(){
+         userPreferences.getUser()
     }
 }

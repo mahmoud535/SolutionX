@@ -4,6 +4,7 @@ package com.example.solutionx.features.authentication.login.data.repository
 import com.example.solutionx.features.authentication.login.data.mapper.LoginMapper
 import com.example.solutionx.features.authentication.login.data.model.entity.UserEntity
 import com.example.solutionx.features.authentication.login.domain.model.Login
+import com.example.solutionx.features.authentication.login.domain.model.User
 import com.example.solutionx.features.authentication.login.domain.repository.ILoginRepository
 import com.example.solutionx.features.authentication.login.domain.repository.local.ILoginLocalDS
 import com.example.solutionx.features.authentication.login.domain.repository.remote.ILoginRemoteDS
@@ -37,8 +38,8 @@ internal class LoginRepository  @Inject constructor(
         return localDs.getAccessToken()
     }
 
-    override suspend fun getUser(): Flow<UserEntity?> {
-        return localDs.getUser()
+    override suspend fun getUser() {
+          localDs.getUser()
     }
 
 

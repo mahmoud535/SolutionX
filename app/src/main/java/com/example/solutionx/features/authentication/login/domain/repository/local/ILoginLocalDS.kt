@@ -7,6 +7,6 @@ import kotlinx.coroutines.flow.Flow
 internal interface ILoginLocalDS {
     suspend fun saveUser(login: LoginEntity)
     suspend fun getAccessToken(): Flow<String?>
-    suspend fun getUser(): Flow<UserEntity?>
+    suspend fun getUser()
 
 }
