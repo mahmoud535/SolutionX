@@ -22,12 +22,22 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_email_Client"
         style="@style/EditText"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
+        android:hint="Phone"
+        android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_CountruCode"
+        style="@style/EditText"
+        android:hint="@string/email"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_email_Client" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_password"
@@ -37,7 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_email_Client" />
+        app:layout_constraintTop_toBottomOf="@+id/et_CountruCode" />
 
 
     <!--    <com.example.solutionx.utils.MSPTextViewBold-->

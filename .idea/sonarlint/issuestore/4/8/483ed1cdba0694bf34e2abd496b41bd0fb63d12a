@@ -1,8 +1,6 @@
 
-qkotlin:S1170"NRename this parameter to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(±ı²öüÿÿÿÿ8Ø—Ş½é1
-7kotlin:S1128"Remove this unused import.(²…¿ßÿÿÿÿÿ
->kotlin:S1128"Remove this unused import.(ìõ²Øıÿÿÿÿ8á—Ş½é1
-9kotlin:S1128
-"Remove this unused import.(î±‚º8â—Ş½é1
-Gkotlin:S18744"#Deprecated code should not be used.(¬ğıßûÿÿÿÿ8ã—Ş½é1
-Gkotlin:S18745"#Deprecated code should not be used.(µÿ€İüÿÿÿÿ8ã—Ş½é1
+Bkotlin:S125"Remove this commented out code.(îºç–úÿÿÿÿ8—üî½é1
+2kotlin:S1128"Remove this unused import.(åğ•
+>kotlin:S1128"Remove this unused import.(¿ÅÑùÿÿÿÿ8 üî½é1
+Gkotlin:S1874"#Deprecated code should not be used.(¬ğıßûÿÿÿÿ8¢üî½é1
+Bkotlin:S1874"#Deprecated code should not be used.(‹½›­8¢üî½é1

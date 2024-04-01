@@ -1,3 +1,4 @@
 
-nkotlin:S1192&"ODefine a constant instead of duplicating this literal "error in login" 3 times.(¬ÂêÅ8ù—Ş½é1
-qkotlin:S3776"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Ü‚î8û—Ş½é1
+=kotlin:S125&"Remove this commented out code.(Ñ•ê8¬üî½é1
+=kotlin:S125B"Remove this commented out code.(¨¦¼8¯üî½é1
+9kotlin:S1128"Remove this unused import.(“µ…”8¹üî½é1

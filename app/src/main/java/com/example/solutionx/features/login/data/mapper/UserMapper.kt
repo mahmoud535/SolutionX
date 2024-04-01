@@ -1,20 +1,26 @@
 package com.example.solutionx.features.login.data.mapper
 
-import com.example.solutionx.features.login.data.model.UserDto
-import com.example.solutionx.features.login.data.model.UserEntity
+import com.example.solutionx.common.data.mapper.Mapper
+import com.example.solutionx.features.login.data.model.dto.UserDto
+import com.example.solutionx.features.login.data.model.entity.UserEntity
 import com.example.solutionx.features.login.domain.model.User
-import retrofit2.Response
 
-object UserMapper {
-    fun mapDtoToDomain(userDto: UserDto): User {
-        return User(userDto.id, userDto.username, userDto.email, userDto.phoneNumber)
+internal object UserMapper : Mapper<UserDto, User, UserEntity>() {
+
+    override fun dtoToDomain(model: UserDto): User {
+        return User(
+            id = model.id ?: 0,
+            name = model.firstname.orEmpty(),
+            email = model.email.orEmpty(),
+        )
     }
 
-    fun mapEntityToDomain(userEntity: UserEntity): User {
-        return User(userEntity.id, userEntity.username, userEntity.email, userEntity.phoneNumber)
-    }
-    fun mapDomainToEntity(user: User): UserEntity {
-        return UserEntity(user.id, user.username, user.email, user.phoneNumber)
+    override fun domainToEntity(model: User): UserEntity {
+        return UserEntity(
+            id = model?.id ?: 0,
+            name = model?.name.orEmpty(),
+            email = model?.email.orEmpty(),
+        )
     }
 }
 
