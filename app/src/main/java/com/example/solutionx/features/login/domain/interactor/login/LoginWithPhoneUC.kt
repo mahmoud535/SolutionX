@@ -1,16 +1,13 @@
 package com.example.solutionx.features.login.domain.interactor.login
 
-import android.util.Log
 import com.example.solutionx.common.data.model.Resource
-import com.example.solutionx.common.data.model.exception.LeonException
 import com.example.solutionx.common.domain.BaseUseCase
-import com.example.solutionx.features.login.domain.model.LoginRequest
+import com.example.solutionx.features.login.data.model.request.LoginRequest
 import com.example.solutionx.features.login.domain.model.User
 import com.example.solutionx.features.login.domain.repository.ILoginRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class LoginWithPhoneUC  @Inject constructor(

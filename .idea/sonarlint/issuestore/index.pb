@@ -271,3 +271,15 @@ Lapp/src/main/java/com/example/solutionx/features/login/domain/model/Phone.kt,0
 Qapp/src/main/java/com/example/solutionx/features/login/data/model/dto/PhoneDto.kt,9\e\9eb9a4c51b4f9707969c6a3300b89c671a9a2f0d
 €
 Papp/src/main/java/com/example/solutionx/features/login/data/model/dto/UserDto.kt,4\0\40e36cab0b51e299cd400b2dd7047650494b27ec
+†
+Vapp/src/main/java/com/example/solutionx/common/data/repository/local/StorageKeyEnum.kt,c\f\cf4eed33dfd714b5482cc75239de072107a93516
+ˆ
+Xapp/src/main/java/com/example/solutionx/common/domain/repository/loca/IStorageKeyEnum.kt,f\8\f8147c88c2f50636005450c500095e85bd365b9e
+‰
+Yapp/src/main/java/com/example/solutionx/features/login/data/model/request/LoginRequest.kt,5\0\50bae61d5e4bc17d2655a6dc19d5818a5fee5095
+‚
+Rapp/src/main/java/com/example/solutionx/features/login/data/model/request/Phone.kt,1\1\11e1eeab5b5cca5be3c549707d05a03bda45a111
+n
+>app/src/main/java/com/example/solutionx/common/di/NetworkDI.kt,5\4\545aa627bcb6aa2925c5ccf977b14e4caa20bdf2
+n
+>app/src/main/java/com/example/solutionx/common/di/StorageDI.kt,6\4\64b88399fe1c59a4ec009e6ffefe3ee8eae5202f
