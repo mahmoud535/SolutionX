@@ -22,7 +22,7 @@
             android:name=".features.services.presentation.ui.activity.list.ListActivity"
             android:exported="false" />
         <activity
-            android:name=".features.authentication.login.presentation.ui.activity.login.LoginActivity"
+            android:name=".features.login.presentation.ui.activity.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

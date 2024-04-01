@@ -1,9 +1,6 @@
 package com.example.solutionx.common.data.repository.remote
 
 import com.example.solutionx.common.domain.repository.remote.IRestApiNetworkProvider
-import com.example.solutionx.features.authentication.login.data.model.dto.LoginDto
-import com.example.solutionx.features.authentication.login.data.remote.ServiceApi
-import retrofit2.Response
 import javax.inject.Inject
 
 internal class RestApiNetworkProvider  @Inject constructor(private val serviceApi: ServiceApi):IRestApiNetworkProvider {

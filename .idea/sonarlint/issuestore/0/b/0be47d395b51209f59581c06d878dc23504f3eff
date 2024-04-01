@@ -1,8 +1,11 @@
 
-Wkotlin:S1172D"8Use "_" instead of this unused lambda parameter "state".(­Æ¿µ8»¸Àøç1
-Bkotlin:S125("Remove this commented out code.(ØİÈ÷şÿÿÿÿ8…¾øç1
-Bkotlin:S125K"Remove this commented out code.(—‹à…üÿÿÿÿ8œ ¾øç1
-xkotlin:S6306B"TUsing "GlobalScope" here leads to the breaking of structured concurrency principles.(š£Œúÿÿÿÿ8…¾øç1
-8kotlin:S1128"Remove this unused import.(Ş‚½8« ¾øç1
-9kotlin:S1128"Remove this unused import.(´Ùí8« ¾øç1
->kotlin:S1128"Remove this unused import.(èãÊõûÿÿÿÿ8« ¾øç1
+Wkotlin:S1172G"8Use "_" instead of this unused lambda parameter "state".(­Æ¿µ8¢…Àè1
+Bkotlin:S125+"Remove this commented out code.(ØİÈ÷şÿÿÿÿ8§…Àè1
+Bkotlin:S125N"Remove this commented out code.(—‹à…üÿÿÿÿ8¨…Àè1
+xkotlin:S6306E"TUsing "GlobalScope" here leads to the breaking of structured concurrency principles.(š£Œúÿÿÿÿ8±…Àè1
+8kotlin:S1128"Remove this unused import.(Ş‚½8·…Àè1
+9kotlin:S1128"Remove this unused import.(´Ùí8·…Àè1
+9kotlin:S1128"Remove this unused import.(Ø¡÷ˆ8÷­Ôé1
+>kotlin:S1128"Remove this unused import.(Ó¬±¨ıÿÿÿÿ8ø­Ôé1
+9kotlin:S1128"Remove this unused import.(¤šÆ8ú­Ôé1
+>kotlin:S1128"Remove this unused import.(èãÊõûÿÿÿÿ8·…Àè1
