@@ -1,34 +1,23 @@
 package com.example.solutionx.features.login.presentation.ui.activity.login
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.solutionx.databinding.ActivityLoginBinding
-import com.example.solutionx.features.singleclick.presentation.ui.activity.list.ListActivity
+import com.example.solutionx.presentation.ui.activity.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-//import dagger.hilt.android.AndroidEntryPoint
-import java.util.Locale
-import javax.inject.Inject
+
 
 @AndroidEntryPoint
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(){
 
-    lateinit var binding: ActivityLoginBinding
-
+    private lateinit var binding: ActivityLoginBinding
     private val viewModel: LoginViewModel by viewModels()
     private val viewModelLanguage: LanguageViewModel by viewModels()
 
@@ -37,19 +26,13 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        viewModelLanguage.loadLocate()
-//
-//        lifecycleScope.launch {
-//            viewModelLanguage.languageChanged.collect {
-//                    recreate()
-//            }
-//        }
+        actions()
 
-        loadLocate()
+    }
+    private fun actions() {
         listener()
         observeViewState()
-
-
+        getLanguage()
     }
 
 
@@ -63,48 +46,48 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun renderState(state: LoginViewState) {
+    private fun renderState(state: LoginState) {
         when (state) {
-            is LoginViewState.UserLoggedIn -> {
-
+            is LoginState.Success -> {
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                finish()
             }
-
-            LoginViewState.Loading -> {
-
+            is LoginState.Loading -> {
+                // Handle loading state if needed
             }
-
-            is LoginViewState.Error -> {
-//                Toast.makeText(this@LoginActivity, state.message, Toast.LENGTH_SHORT).show()
+            is LoginState.Error -> {
+                // Handle error state if needed
             }
         }
     }
 
 
-    fun listener() {
+    private fun listener() {
         binding.ivLanguages.setOnClickListener {
             showChangeLanguagesDialog()
-//            viewModelLanguage.showChangeLanguagesDialog(this@LoginActivity)
         }
         binding.btnLogin.setOnClickListener {
-            val email = binding.etEmailClient.text.toString()
+            val phoneNumber = binding.etEmailClient.text.toString()
+            val countryCode = binding.etCountruCode.text.toString()
             val password = binding.etPassword.text.toString()
-            viewModel.processIntent(LoginIntent.LoginWithEmail(email, password))
-
-            val intent = Intent(this, ListActivity::class.java)
-            startActivity(intent)
+            viewModel.processLoginIntent(LoginIntent.LoginWithPhone(phoneNumber,countryCode,password))
         }
+    }
+
+    private fun getLanguage() {
+        viewModelLanguage.loadLocate(this)
     }
 
     private fun showChangeLanguagesDialog() {
-        val listItmes = arrayOf("عربي", "English")
-        val mBuilder = AlertDialog.Builder(this@LoginActivity)
+        val listItems = arrayOf("عربي", "English")
+        val mBuilder = AlertDialog.Builder(this)
         mBuilder.setTitle("Choose Language")
-        mBuilder.setSingleChoiceItems(listItmes, -1) { dialog, which ->
+        mBuilder.setSingleChoiceItems(listItems, -1) { dialog, which ->
             if (which == 0) {
-                setLocate("ar")
+                viewModelLanguage.setLocate(this, "ar")
                 recreate()
             } else if (which == 1) {
-                setLocate("en")
+                viewModelLanguage.setLocate(this, "en")
                 recreate()
             }
             dialog.dismiss()
@@ -113,20 +96,4 @@ class LoginActivity : AppCompatActivity() {
         mDialog.show()
     }
 
-    private fun setLocate(Lang: String) {
-        val locale = Locale(Lang)
-        Locale.setDefault(locale)
-        val config = Configuration()
-        config.locale = locale
-        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
-        val editor = getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
-        editor.putString("My_Lang", Lang)
-        editor.apply()
-    }
-
-    private fun loadLocate() {
-        val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
-        val language = sharedPreferences.getString("My_Lang", "")
-        setLocate(language!!)
-    }
 }

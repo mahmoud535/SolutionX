@@ -19,7 +19,7 @@
         android:theme="@style/Theme.SolutionX"
         tools:targetApi="31">
         <activity
-            android:name=".features.singleclick.presentation.ui.activity.list.ListActivity"
+            android:name=".features.services.presentation.ui.activity.list.ListActivity"
             android:exported="false" />
         <activity
             android:name=".features.login.presentation.ui.activity.login.LoginActivity"
@@ -34,13 +34,14 @@
             android:name=".presentation.ui.activity.main.MainActivity"
             android:exported="true">
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
+<!--             <intent-filter>-->
+<!--             <action android:name="android.intent.action.MAIN" />-->
 
 
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+<!--             <category android:name="android.intent.category.LAUNCHER" />-->
+<!--             </intent-filter>-->
         </activity>
+
     </application>
 
 </manifest>

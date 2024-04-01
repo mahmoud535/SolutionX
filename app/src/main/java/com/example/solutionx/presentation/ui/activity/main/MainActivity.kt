@@ -1,6 +1,6 @@
 package com.example.solutionx.presentation.ui.activity.main
 
-import am.leon.solutionx.android.helpers.logging.getClassLogger
+import com.example.solutionx.android.helpers.logging.getClassLogger
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -8,7 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.solutionx.BuildConfig
 import com.example.solutionx.R
-import com.example.solutionx.features.singleclick.presentation.productflavors.LoggerProvider
+import com.example.solutionx.features.services.presentation.productflavors.LoggerProvider
 import dagger.hilt.android.AndroidEntryPoint
 
 //import dagger.hilt.android.AndroidEntryPoint
@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 //import com.example.solutionx.presentation.activity.CustomLogger
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         logger.info("This is an info log....")
         logger.warning("This is a warning log....")
         logger.error("This is an error log....")
-        logger.error("This is an error log with throwable....", Throwable("Exception....."))
+        logger.error("This is an error log with throwable....", Throwable("CustomException....."))
 
         val logger = LoggerProvider.getLogger()
         logger.log("Hello from ${BuildConfig.FLAVOR} flavor!")
