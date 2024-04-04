@@ -28,6 +28,7 @@ class EncryptionProvider: IEncryptionProvider {
                     KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
                 ).setBlockModes(BLOCK_MODE)
                     .setEncryptionPaddings(PADDING)
+                    .setKeySize(128)
                     .build()
             )
         }.generateKey()
