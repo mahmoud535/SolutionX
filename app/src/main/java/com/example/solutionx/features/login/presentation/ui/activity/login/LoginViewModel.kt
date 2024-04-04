@@ -6,11 +6,10 @@ import com.example.solutionx.common.data.model.Resource
 import com.example.solutionx.features.login.domain.interactor.login.LoginWithEmailUC
 import com.example.solutionx.features.login.domain.interactor.login.LoginWithPhoneUC
 import com.example.solutionx.features.login.domain.interactor.login.LoginWithSocialUC
-import com.example.solutionx.features.login.domain.model.LoginRequest
-import com.example.solutionx.features.login.domain.model.Phone
+import com.example.solutionx.features.login.data.model.request.LoginRequest
+import com.example.solutionx.features.login.data.model.request.Phone
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch

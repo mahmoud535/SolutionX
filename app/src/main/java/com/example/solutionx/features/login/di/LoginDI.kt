@@ -1,9 +1,9 @@
 package com.example.solutionx.features.login.di
 
 import com.example.solutionx.BuildConfig
+import com.example.solutionx.common.data.repository.local.LocalDsProvider
 import com.example.solutionx.common.data.repository.remote.RestApiNetworkProvider
 import com.example.solutionx.common.domain.repository.remote.IRestApiNetworkProvider
-import com.example.solutionx.features.login.data.local.UserPreferences
 import com.example.solutionx.common.data.repository.remote.ServiceApi
 import com.example.solutionx.features.login.data.repository.LoginRepository
 import com.example.solutionx.features.login.data.repository.local.LoginLocalDS
@@ -34,10 +34,10 @@ internal object LoginDI {
     }
 
     @Provides
-    fun provideRemoteDS(api: ServiceApi): ILoginRemoteDS = LoginRemoteDS(api)
+    fun provideRemoteDS(provider: IRestApiNetworkProvider): ILoginRemoteDS = LoginRemoteDS(provider)
 
     @Provides
-    fun provideLocalDS(userPreferences: UserPreferences): ILoginLocalDS = LoginLocalDS(userPreferences)
+    fun provideLocalDS(userPreferences: LocalDsProvider): ILoginLocalDS = LoginLocalDS(userPreferences)
 
     @Provides
     fun provideRepository(remoteDS: ILoginRemoteDS, localDS: ILoginLocalDS): ILoginRepository =
