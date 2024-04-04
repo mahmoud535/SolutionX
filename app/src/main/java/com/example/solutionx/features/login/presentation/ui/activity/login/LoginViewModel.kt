@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import okhttp3.internal.http2.Http2Reader.Companion.logger
 import javax.inject.Inject
 
 @HiltViewModel
@@ -33,19 +34,6 @@ class LoginViewModel @Inject constructor(
 
         }
     }
-
-//    private fun loginWithEmail(email: String, password: String) {
-//        viewModelScope.launch {
-//            loginWithEmailUC.invoke(viewModelScope, email, password) { resource ->
-//                when (resource) {
-//                    is Resource.Progress -> _viewState.update { LoginState.Loading }
-//                    is Resource.Success -> _viewState.update { LoginState.UserLoggedIn(resource.model.user) }
-//                    is Resource.Failure -> _viewState.update { LoginState.Error(resource.exception.message ?: "error in login") }
-//                }
-//            }
-//        }
-//    }
-
     private fun loginWithPhone(phoneNumber: String, countryCode: String, password: String) {
         viewModelScope.launch {
             val loginRequest = LoginRequest(
@@ -55,26 +43,13 @@ class LoginViewModel @Inject constructor(
             loginWithPhoneUC.invoke(viewModelScope, loginRequest) { resource ->
                 when (resource) {
                     is Resource.Progress -> _viewState.update { LoginState.Loading }
-                    is Resource.Success -> _viewState.update { LoginState.Success(resource.model) }
+                    is Resource.Success ->{
+                        _viewState.update { LoginState.Success(resource.model) }
+                    }
                     is Resource.Failure -> _viewState.update { LoginState.Error(resource.exception.message ?: "error in login") }
                 }
             }
         }
     }
-
-//    private fun loginWithSocial(token: String) {
-//        viewModelScope.launch {
-//            loginWithSocialUC.invoke(viewModelScope, token) { resource ->
-//                when (resource) {
-//                    is Resource.Progress -> _viewState.update { LoginState.Loading }
-//                    is Resource.Success -> _viewState.update { LoginState.UserLoggedIn(resource.model.user) }
-//                    is Resource.Failure -> _viewState.update { LoginState.Error(resource.exception.message ?: "error in login") }
-//                }
-//            }
-//        }
-//    }
-
-
-
 
 }

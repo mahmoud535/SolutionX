@@ -217,3 +217,17 @@ n
 >app/src/main/java/com/example/solutionx/common/di/NetworkDI.kt,5\4\545aa627bcb6aa2925c5ccf977b14e4caa20bdf2
 n
 >app/src/main/java/com/example/solutionx/common/di/StorageDI.kt,6\4\64b88399fe1c59a4ec009e6ffefe3ee8eae5202f
+ñ
+fapp/src/main/java/com/example/solutionx/common/domain/repository/loca/encryption/EncryptionProvider.kt,1\f\1fb2d1c96968074ab9a3d4e71521ab35c4b0e5fa
+ó
+gapp/src/main/java/com/example/solutionx/common/domain/repository/loca/encryption/IEncryptionProvider.kt,8\b\8b7e0a7499d8996c6fb07d47b184d202364aa0fd
+ë
+aapp/src/main/java/com/example/solutionx/common/domain/repository/loca/localds/ILocalDSProvider.kt,0\f\0fe86c2ec3bf1b77e64edae2ceb878a865750966
+ï
+eapp/src/main/java/com/example/solutionx/common/data/repository/local/encryption/EncryptionProvider.kt,2\5\259e7e63645fbb50291e7bb35cecca7a56e15cd9
+è
+_app/src/main/java/com/example/solutionx/common/data/repository/local/localds/LocalDsProvider.kt,2\b\2b2bae48360b217780a181195de71dfd86da430f
+é
+^app/src/main/java/com/example/solutionx/common/data/repository/local/localds/StorageKeyEnum.kt,4\9\498a5ca17ce7dc361fd9c21aa20fdd936bc69299
+á
+Wapp/src/main/java/com/example/solutionx/common/domain/repository/usecase/BaseUseCase.kt,f\8\f8015a8fbc0bc02e0fa00e9f04509c85f78fa813

@@ -1,4 +1,4 @@
-package com.example.solutionx.common.domain
+package com.example.solutionx.common.domain.repository.usecase
 
 import com.example.solutionx.common.data.model.Resource
 import com.example.solutionx.common.data.model.exception.LeonException

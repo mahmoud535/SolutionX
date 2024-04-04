@@ -155,6 +155,8 @@ dependencies {
    //DataStore
     implementation ("androidx.datastore:datastore-preferences:1.0.0")
 
+    implementation ("org.jetbrains.kotlin:kotlin-reflect:1.9.23")
+
 }
 
 kapt {

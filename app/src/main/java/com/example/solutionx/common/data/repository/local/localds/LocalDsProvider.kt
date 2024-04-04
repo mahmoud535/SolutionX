@@ -1,4 +1,4 @@
-package com.example.solutionx.common.data.repository.local
+package com.example.solutionx.common.data.repository.local.localds
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -12,13 +12,11 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.solutionx.R
 import com.example.solutionx.common.data.model.exception.LeonException
-import com.example.solutionx.common.domain.repository.loca.ILocalDSProvider
-import com.example.solutionx.common.domain.repository.loca.IStorageKeyEnum
+import com.example.solutionx.common.domain.repository.loca.localds.ILocalDSProvider
+import com.example.solutionx.common.domain.repository.loca.localds.IStorageKeyEnum
 import com.example.solutionx.features.login.presentation.util.Constants
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.runBlocking
 
 internal class LocalDsProvider(private val context: Context) : ILocalDSProvider {
 

@@ -1,8 +1,10 @@
 package com.example.solutionx.common.di
 
 import android.content.Context
-import com.example.solutionx.common.data.repository.local.LocalDsProvider
-import com.example.solutionx.common.domain.repository.loca.ILocalDSProvider
+import com.example.solutionx.common.data.repository.local.encryption.EncryptionProvider
+import com.example.solutionx.common.data.repository.local.localds.LocalDsProvider
+import com.example.solutionx.common.domain.repository.loca.encryption.IEncryptionProvider
+import com.example.solutionx.common.domain.repository.loca.localds.ILocalDSProvider
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -40,4 +42,8 @@ internal object StorageDI {
     @Singleton
     fun provideLazyUserPreferences(userPreferences: LocalDsProvider): Lazy<LocalDsProvider> =
         lazy { userPreferences }
+
+    @Provides
+    fun provideEncryptionManager(): IEncryptionProvider =
+        EncryptionProvider()
 }
