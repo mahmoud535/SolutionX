@@ -231,3 +231,5 @@ _app/src/main/java/com/example/solutionx/common/data/repository/local/localds/Lo
 ^app/src/main/java/com/example/solutionx/common/data/repository/local/localds/StorageKeyEnum.kt,4\9\498a5ca17ce7dc361fd9c21aa20fdd936bc69299
 ‡
 Wapp/src/main/java/com/example/solutionx/common/domain/repository/usecase/BaseUseCase.kt,f\8\f8015a8fbc0bc02e0fa00e9f04509c85f78fa813
+t
+Dapp/src/main/java/solutionx/android/helper/logging/LoggerProvider.kt,0\4\0407a58465a4cbff09556e606b78c76bbfc2471a

@@ -10,7 +10,7 @@ import com.example.solutionx.features.login.data.model.entity.LoginEntity
 import com.example.solutionx.features.login.data.model.entity.UserEntity
 import com.example.solutionx.features.login.domain.repository.local.ILoginLocalDS
 import com.google.gson.Gson
-import okhttp3.internal.http2.Http2Reader.Companion.logger
+//import okhttp3.internal.http2.Http2Reader.Companion.logger
 //import okhttp3.internal.concurrent.TaskRunner.Companion.logger
 import java.util.Base64
 
@@ -54,7 +54,11 @@ internal class LoginLocalDS (private val storageKV: ILocalDSProvider,private val
     }
 
     private fun logUserInfoAfterDecryption( userJson: String,result: UserEntity){
-        logger.warning("userInfo encryption ${userJson} ")
-        logger.warning("userInfo after decryption  ${result} ")
+        logger.warning("userInfo encryption $userJson ")
+        logger.warning("userInfo after decryption  $result ")
+    }
+
+    companion object {
+        private val logger = getClassLogger()
     }
 }
