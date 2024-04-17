@@ -1,10 +1,12 @@
 package com.example.solutionx.features.login.di
 
-import com.example.solutionx.BuildConfig
-import com.example.solutionx.common.data.repository.local.LocalDsProvider
+import android.os.Build
+import androidx.annotation.RequiresApi
+import com.example.solutionx.common.data.repository.local.localds.LocalDsProvider
 import com.example.solutionx.common.data.repository.remote.RestApiNetworkProvider
 import com.example.solutionx.common.domain.repository.remote.IRestApiNetworkProvider
 import com.example.solutionx.common.data.repository.remote.ServiceApi
+import com.example.solutionx.common.domain.repository.loca.encryption.IEncryptionProvider
 import com.example.solutionx.features.login.data.repository.LoginRepository
 import com.example.solutionx.features.login.data.repository.local.LoginLocalDS
 import com.example.solutionx.features.login.data.repository.remote.LoginRemoteDS
@@ -14,16 +16,10 @@ import com.example.solutionx.features.login.domain.interactor.login.LoginWithSoc
 import com.example.solutionx.features.login.domain.repository.ILoginRepository
 import com.example.solutionx.features.login.domain.repository.local.ILoginLocalDS
 import com.example.solutionx.features.login.domain.repository.remote.ILoginRemoteDS
-import com.example.solutionx.features.login.presentation.util.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.android.scopes.ViewModelScoped
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 @InstallIn(ViewModelComponent::class)
@@ -36,8 +32,9 @@ internal object LoginDI {
     @Provides
     fun provideRemoteDS(provider: IRestApiNetworkProvider): ILoginRemoteDS = LoginRemoteDS(provider)
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @Provides
-    fun provideLocalDS(userPreferences: LocalDsProvider): ILoginLocalDS = LoginLocalDS(userPreferences)
+    fun provideLocalDS(userPreferences: LocalDsProvider,dataEncryption:IEncryptionProvider): ILoginLocalDS = LoginLocalDS(userPreferences,dataEncryption)
 
     @Provides
     fun provideRepository(remoteDS: ILoginRemoteDS, localDS: ILoginLocalDS): ILoginRepository =

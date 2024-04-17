@@ -8,7 +8,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.solutionx.BuildConfig
 import com.example.solutionx.R
-import com.example.solutionx.features.services.presentation.productflavors.LoggerProvider
 import dagger.hilt.android.AndroidEntryPoint
 
 //import dagger.hilt.android.AndroidEntryPoint
@@ -27,14 +26,14 @@ import dagger.hilt.android.AndroidEntryPoint
             insets
         }
 
-        logger.debug("This is a debug log....")
-        logger.info("This is an info log....")
-        logger.warning("This is a warning log....")
-        logger.error("This is an error log....")
-        logger.error("This is an error log with throwable....", Throwable("CustomException....."))
-
-        val logger = LoggerProvider.getLogger()
-        logger.log("Hello from ${BuildConfig.FLAVOR} flavor!")
+//        logger.debug("This is a debug log....")
+//        logger.info("This is an info log....")
+//        logger.warning("This is a warning log....")
+//        logger.error("This is an error log....")
+//        logger.error("This is an error log with throwable....", Throwable("CustomException....."))
+//
+//        val logger = LoggerProvider.getLogger()
+//        logger.log("Hello from ${BuildConfig.FLAVOR} flavor!")
 
 
     }

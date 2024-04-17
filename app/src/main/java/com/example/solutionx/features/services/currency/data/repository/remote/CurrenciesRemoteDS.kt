@@ -1,6 +1,6 @@
 package com.example.solutionx.features.services.currency.data.repository.remote
 
-import am.leon.solutionx.android.extentions.parseJsonFile
+import com.example.solutionx.android.extentions.parseJsonFile
 import android.content.Context
 import com.example.solutionx.features.services.currency.data.model.dto.CurrencyDto
 import com.example.solutionx.features.services.currency.domain.repository.remote.ICurrenciesRemoteDS

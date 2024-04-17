@@ -2,9 +2,11 @@ package com.example.solutionx.features.login.data.repository
 
 
 import com.example.solutionx.features.login.data.mapper.LoginMapper
+import com.example.solutionx.features.login.data.mapper.UserMapper
 import com.example.solutionx.features.login.data.model.entity.UserEntity
 import com.example.solutionx.features.login.domain.model.Login
 import com.example.solutionx.features.login.data.model.request.LoginRequest
+import com.example.solutionx.features.login.domain.model.User
 import com.example.solutionx.features.login.domain.repository.ILoginRepository
 import com.example.solutionx.features.login.domain.repository.local.ILoginLocalDS
 import com.example.solutionx.features.login.domain.repository.remote.ILoginRemoteDS
@@ -21,18 +23,18 @@ internal class LoginRepository  (
         return LoginMapper.dtoToDomain(result!!)
     }
 
-    override suspend fun saveUser(login: Login) {
-        val result = LoginMapper.domainToEntity(login)
+    override suspend fun saveUser(user: User) {
+        val result = UserMapper.domainToEntity(user)
         localDs.saveUser(result)
     }
 
-//    override suspend fun getAccessToken(): Flow<String?> {
-//        return localDs.getAccessToken()
-//    }
-//
-//    override suspend fun getUser():UserEntity =
-//          localDs.getUser()
-//
+    override suspend fun saveAccessToken(token: String) =
+        localDs.saveAccessToken(token)
+
+
+    override suspend fun getUser(): UserEntity =
+        localDs.getUser()
+
 
 
 }
