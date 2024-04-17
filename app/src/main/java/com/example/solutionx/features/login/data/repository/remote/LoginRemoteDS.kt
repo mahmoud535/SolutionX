@@ -2,17 +2,19 @@ package com.example.solutionx.features.login.data.repository.remote
 
 import com.example.solutionx.features.login.data.model.dto.LoginDto
 import com.example.solutionx.common.data.repository.remote.ServiceApi
-import com.example.solutionx.features.login.domain.model.LoginRequest
+import com.example.solutionx.common.domain.repository.remote.IRestApiNetworkProvider
+import com.example.solutionx.features.login.data.model.request.LoginRequest
 import com.example.solutionx.features.login.domain.repository.remote.ILoginRemoteDS
-import javax.inject.Inject
 
-internal class LoginRemoteDS (private val api: ServiceApi) : ILoginRemoteDS {
+internal class LoginRemoteDS(private val provider: IRestApiNetworkProvider) : ILoginRemoteDS {
 
     override suspend fun loginWithPhone(
         loginRequest: LoginRequest
     ): LoginDto? {
-       val request =  api.loginWithPhone(loginRequest)
-      return request.body()
+        return provider.post(
+            responseWrappedModel = LoginDto::class.java, pathUrl = "login",
+            headers = hashMapOf("Accept-Language" to "ar"), requestBody = loginRequest
+        )
     }
 
 }

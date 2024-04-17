@@ -1,12 +1,26 @@
 package com.example.solutionx.common.domain.repository.remote
 
+import java.lang.reflect.Type
+
 internal interface IRestApiNetworkProvider {
 
-    suspend fun <response> get(url: String, query: Map<String, Any> = emptyMap(), headers: Map<String, String> = emptyMap()): response
-    suspend fun <response> post( body: Map<String, Any> = emptyMap()): response
+    suspend fun <ResponseBody, RequestBody> post(
+        responseWrappedModel: Type, pathUrl: String, headers: Map<String, Any>? = null,
+        queryParams: Map<String, Any>? = null, requestBody: RequestBody
+    ): ResponseBody
 
-    //the parameter in method put is the correct one
-    suspend fun <response> put(url: String, body: Map<String, Any> = emptyMap(), query: Map<String, Any> = emptyMap(), headers: Map<String, String> = emptyMap()): response
-    suspend fun <response> delete(url: String, query: Map<String, Any> = emptyMap(), headers: Map<String, String> = emptyMap()): response
+    suspend fun <ResponseBody, RequestBody> delete(
+        responseWrappedModel: Type, pathUrl: String, headers: Map<String, Any>? = null,
+        queryParams: Map<String, Any>? = null, requestBody: RequestBody? = null
+    ): ResponseBody
 
+    suspend fun <ResponseBody, RequestBody> put(
+        responseWrappedModel: Type, pathUrl: String, headers: Map<String, Any>? = null,
+        queryParams: Map<String, Any>? = null, requestBody: RequestBody? = null
+    ): ResponseBody
+
+    suspend fun <ResponseBody> get(
+        responseWrappedModel: Type, pathUrl: String, headers: Map<String, Any>? = null,
+        queryParams: Map<String, Any>? = null
+    ): ResponseBody
 }

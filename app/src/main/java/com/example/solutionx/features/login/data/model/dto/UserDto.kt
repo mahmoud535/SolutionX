@@ -6,7 +6,7 @@ internal data class UserDto(
     @SerializedName("all_permissions")
     val allPermissions: List<Any?>? = null,
     @SerializedName("birthdate")
-    val birthdate: Any? = null,
+    val birthdate: String? = null,
     @SerializedName("blocked")
     val blocked: Int? = null,
     @SerializedName("country")

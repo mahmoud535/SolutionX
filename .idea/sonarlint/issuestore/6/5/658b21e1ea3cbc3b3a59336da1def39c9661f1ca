@@ -1,5 +1,3 @@
 
-=kotlin:S125"Remove this commented out code.(×¥ëô8—ôñµé1
-:kotlin:S63102"Avoid hardcoded dispatchers.(’ï«68ú¿œ¼é1
->kotlin:S1128"Remove this unused import.(ÊÒÅ­ùÿÿÿÿ8õ²ß¼é1
->kotlin:S1128"Remove this unused import.(ŞŠ‹Ùüÿÿÿÿ8Ê–œ¼é1
+:kotlin:S6310"Avoid hardcoded dispatchers.(’ï«68è®óÙî1
+>kotlin:S1128"Remove this unused import.(ŞŠ‹Ùüÿÿÿÿ8è®óÙî1

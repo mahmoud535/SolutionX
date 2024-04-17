@@ -5,8 +5,8 @@ import com.example.solutionx.features.login.data.model.entity.UserEntity
 import kotlinx.coroutines.flow.Flow
 
 internal interface ILoginLocalDS {
-    suspend fun saveUser(login: LoginEntity)
-    suspend fun getAccessToken(): Flow<String?>
+    suspend fun saveUser(userEntity: UserEntity)
+    suspend fun saveAccessToken(token: String)
     suspend fun getUser():UserEntity
 
 }

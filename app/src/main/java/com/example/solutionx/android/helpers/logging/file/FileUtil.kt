@@ -54,7 +54,7 @@ internal object FileUtil {
 
     private lateinit var buffer: BufferedWriter
 
-    fun logToFile(logType: am.leon.solutionx.android.helpers.logging.file.LogType, message: String) {
+    fun logToFile(logType: LogType, message: String) {
         try {
             buffer.apply {
                 write(getFormattedMessage(logType, message))
@@ -78,7 +78,7 @@ internal object FileUtil {
             Log.e(TAG, "IOException was encountered while creating File writer: ", e.cause)
         }
         logToFile(
-            am.leon.solutionx.android.helpers.logging.file.LogType.INFO, "------------------------- Start a new cycle -------------------------"
+            LogType.INFO, "------------------------- Start a new cycle -------------------------"
         )
     }
 
@@ -117,7 +117,7 @@ internal object FileUtil {
         return savedFile
     }
 
-    private fun getFormattedMessage(logType: am.leon.solutionx.android.helpers.logging.file.LogType, message: String): String =
+    private fun getFormattedMessage(logType: LogType, message: String): String =
         StringBuilder().apply {
             append(logType.logType)
             append(" : ")

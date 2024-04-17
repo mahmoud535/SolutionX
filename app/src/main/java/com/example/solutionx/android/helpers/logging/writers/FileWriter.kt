@@ -1,9 +1,9 @@
 package com.example.solutionx.android.helpers.logging.writers
 
-import am.leon.solutionx.android.helpers.logging.file.FileUtil
-import am.leon.solutionx.android.helpers.logging.file.LogType
 import android.util.Log
 import com.example.solutionx.android.helpers.logging.LogWriter
+import com.example.solutionx.android.helpers.logging.file.FileUtil
+import com.example.solutionx.android.helpers.logging.file.LogType
 import java.io.File
 
 class FileWriter(
