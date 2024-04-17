@@ -1,4 +1,4 @@
-package am.leon.solutionx.android.extentions
+package com.example.solutionx.android.extentions
 
 import android.content.Context
 import com.google.gson.Gson

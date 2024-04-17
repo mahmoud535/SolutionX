@@ -1,6 +1,6 @@
 package com.example.solutionx.features.services.country.data.repository.remote
 
-import am.leon.solutionx.android.extentions.parseJsonFile
+import com.example.solutionx.android.extentions.parseJsonFile
 import android.content.Context
 import com.example.solutionx.features.services.country.data.model.dto.CountryDto
 import com.example.solutionx.features.services.country.domain.repository.remote.ICountriesRemoteDS
