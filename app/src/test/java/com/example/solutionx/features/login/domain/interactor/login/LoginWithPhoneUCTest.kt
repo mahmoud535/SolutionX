@@ -21,7 +21,6 @@ import org.junit.Test
 
 class LoginWithPhoneUCTest {
 
-
     private lateinit var repository: ILoginRepository
     private lateinit var loginWithPhoneUC: LoginWithPhoneUC
     private val testDispatcher = UnconfinedTestDispatcher()
@@ -41,8 +40,11 @@ class LoginWithPhoneUCTest {
 
     @Test
     fun `test successful login with phone, country code , and password `() = runTest {
+        // Given a valid login request with the specified phone, country code, and password
         val phone = Phone(countryCode = "0020", number = "100100100")
         val loginRequest = LoginRequest(phone = phone, password = "123456789")
+
+        // Define a user that is expected to be returned by the repository
         val user = User(
             id = 1,
             userName = "jdoe",
@@ -50,6 +52,8 @@ class LoginWithPhoneUCTest {
             email = "jdoe@example.com",
             phone = phone.number
         )
+
+        // Define the login object to be returned by the repository
         val login = Login(message = "Success", accessToken = "token123", userInfo = user)
 
         // Mock the repository behavior

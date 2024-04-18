@@ -235,3 +235,7 @@ kapp/src/test/java/com/example/solutionx/features/login/data/repository/remote/F
 ]app/src/test/java/com/example/solutionx/features/login/data/repository/FakeLoginRepository.kt,f\1\f136d41d6ff6d5cfbda484ad52e78deb04a8fa34
 ‚
 Rapp/src/test/java/com/example/solutionx/features/login/data/repository/FakeRepo.kt,8\5\85ab42e2dc075861f76d9fc8c4c26e4353c72a75
+”
+dapp/src/test/java/com/example/solutionx/features/login/data/repository/remote/FakeLoginRepository.kt,1\f\1f15034e690d9bf6721c90580d77ce2f282cc465
+”
+dapp/src/test/java/com/example/solutionx/features/login/data/repository/FakeRestApiNetworkProvider.kt,9\e\9eb7f63acfef970791955119a0f890863fc56573
