@@ -227,3 +227,11 @@ japp/src/androidTest/java/com/example/solutionx/common/data/repository/local/loc
 papp/src/androidTest/java/com/example/solutionx/common/data/repository/local/encryption/EncryptionProviderTest.kt,3\a\3ae50429a602451604c16ee8651273b0392bfa62
 ó
 gapp/src/androidTest/java/com/example/solutionx/features/login/data/repository/local/LoginLocalDSTest.kt,c\a\caaf6746da4a92513d0cc40f1cff560639910a70
+ï
+eapp/src/test/java/com/example/solutionx/features/login/data/repository/remote/RemoteDataSourceTest.kt,4\6\466611c058ae1b254f3eeef621452add41f290a5
+õ
+kapp/src/test/java/com/example/solutionx/features/login/data/repository/remote/FakeRestApiNetworkProvider.kt,9\6\9648b68961098d040b1000ea64620f55116ada5b
+ç
+]app/src/test/java/com/example/solutionx/features/login/data/repository/FakeLoginRepository.kt,f\1\f136d41d6ff6d5cfbda484ad52e78deb04a8fa34
+Ç
+Rapp/src/test/java/com/example/solutionx/features/login/data/repository/FakeRepo.kt,8\5\85ab42e2dc075861f76d9fc8c4c26e4353c72a75

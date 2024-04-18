@@ -50,7 +50,6 @@ class LoginLocalDSTest{
 
     @Test
     fun saveLoginSavesEncryptedLoginData() = runTest {
-        // Given
         val user = UserEntity()
         val userJson = gson.toJson(user)
         val encryptedUser = "encryptedData"
