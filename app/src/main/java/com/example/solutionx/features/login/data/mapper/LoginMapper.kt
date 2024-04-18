@@ -15,6 +15,14 @@ internal object LoginMapper : Mapper<LoginDto, Login, LoginEntity>() {
         )
     }
 
+//    override fun domainToDto(model: Login): LoginDto {
+//        return LoginDto(
+//            message = model.message.orEmpty(),
+//            token = model.accessToken.orEmpty(),
+//            user = UserMapper.domainToDto(model.userInfo!!)
+//        )
+//    }
+
     override fun domainToEntity(model: Login): LoginEntity {
         return LoginEntity(
             token = model.accessToken,

@@ -217,3 +217,11 @@ Dapp/src/main/java/solutionx/android/helper/logging/LoggerProvider.kt,0\4\0407a
 fapp/src/test/java/com/example/solutionx/features/login/domain/interactor/login/LoginWithPhoneUCTest.kt,c\c\cc5d46113f917306cb406ef24394faf42add37ed
 j
 :app/src/test/java/com/example/solutionx/ExampleUnitTest.kt,4\e\4ecabd9b523ae7cec4c576380331b1d61050a82d
+ö
+japp/src/androidTest/java/com/example/solutionx/common/data/repository/remote/RestApiNetworkProviderTest.kt,4\0\4032fbc747a3bf084260b5f0036da42cda4c3f7f
+ç
+]app/src/test/java/com/example/solutionx/features/login/data/repository/LoginRepositoryTest.kt,6\2\62bccf5ae2913e9c249c41c837f2f9d9c67a0484
+ö
+japp/src/androidTest/java/com/example/solutionx/common/data/repository/local/localds/LocalDsProviderTest.kt,1\a\1abfc6b79c5058b6e28fb4397ce3a2b257513d3c
+†
+papp/src/androidTest/java/com/example/solutionx/common/data/repository/local/encryption/EncryptionProviderTest.kt,3\a\3ae50429a602451604c16ee8651273b0392bfa62
