@@ -59,7 +59,7 @@ class LocalDsProviderTest{
     fun testSaveWithUnsupportedType() {
         runBlocking {
             val key = StorageKeyEnum.USER
-            val unsupportedValue = 1.0  // Unsupported type
+            val unsupportedValue = 1.0
             localDsProvider.save(key, unsupportedValue)
         }
     }
@@ -68,7 +68,7 @@ class LocalDsProviderTest{
     fun testGetWithUnsupportedType() {
         runBlocking {
             val key = StorageKeyEnum.USER
-            val defaultValue = 1.0  // Unsupported default type
+            val defaultValue = 1.0
             localDsProvider.get(key, defaultValue)
         }
     }

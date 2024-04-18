@@ -158,13 +158,16 @@ dependencies {
 
     implementation ("org.jetbrains.kotlin:kotlin-reflect:1.9.23")
 
-//    androidTestImplementation ("org.mockito:mockito-core:2.19.0")
-//    androidTestImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
-//    androidTestImplementation ("io.mockk:mockk:1.12.0") // MockK
+    androidTestImplementation ("org.mockito:mockito-core:3.11.2")
+    androidTestImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    androidTestImplementation ("io.mockk:mockk:1.12.0") // MockK
 //
-//    testImplementation ("org.mockito:mockito-core:2.19.0")
-    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+    testImplementation ("org.mockito:mockito-core:3.11.2")
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
     testImplementation ("io.mockk:mockk:1.12.0") // MockK
+    testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
+
+
 //    androidTestImplementation "io.mockk:mockk-android:1.12.0"
 
 }

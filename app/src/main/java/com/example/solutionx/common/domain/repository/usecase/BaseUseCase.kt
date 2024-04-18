@@ -46,27 +46,3 @@ object BaseUseCase {
     }
 }
 
-
-//abstract class BaseUseCase<T>(
-//    private val call: suspend () -> T,
-//    private val onResult: (Resource<T>) -> Unit
-//) {
-//    suspend fun execute(scope: CoroutineScope) {
-//        scope.launch(Dispatchers.Main) {
-//            onResult.invoke(Resource.loading())
-//            try {
-//                val result = withContext(Dispatchers.IO) {
-//                    call()
-//                }
-//                onResult.invoke(Resource.success(result))
-//            } catch (e: Exception) {
-//                val failureResource = if (e is LeonException)
-//                    e
-//                else
-//                    LeonException.Unknown(message = "Unknown error: $e")
-//
-//                onResult.invoke(Resource.failure(failureResource))
-//            }
-//        }
-//    }
-//}

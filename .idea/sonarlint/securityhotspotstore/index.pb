@@ -225,3 +225,5 @@ japp/src/androidTest/java/com/example/solutionx/common/data/repository/remote/Re
 japp/src/androidTest/java/com/example/solutionx/common/data/repository/local/localds/LocalDsProviderTest.kt,1\a\1abfc6b79c5058b6e28fb4397ce3a2b257513d3c
  
 papp/src/androidTest/java/com/example/solutionx/common/data/repository/local/encryption/EncryptionProviderTest.kt,3\a\3ae50429a602451604c16ee8651273b0392bfa62
+—
+gapp/src/androidTest/java/com/example/solutionx/features/login/data/repository/local/LoginLocalDSTest.kt,c\a\caaf6746da4a92513d0cc40f1cff560639910a70
