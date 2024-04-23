@@ -59,11 +59,11 @@ class ListActivity : AppCompatActivity() {
 
     private fun setupButtons() {
         binding.setNamesButton.setOnClickListener {
-            val intent = MainListIntent.SaveNamesIntent(listOf("mahmoud", "Ali","Mostafa"))
+            val intent = MainListIntent.SaveNamesIntent(listOf("mahmoud", "Ali","Mostafa", "Kareem", "Ahmed"))
             viewModel.handleIntent(intent)
         }
         binding.updateListButton.setOnClickListener {
-            val intent = MainListIntent.UpdateNamesListIntent(listOf("مصطفى", "على","محمود"))
+            val intent = MainListIntent.UpdateNamesListIntent(listOf("مصطفى ","كريم" , "احمد", "على","محمود"))
             viewModel.handleIntent(intent)
         }
     }

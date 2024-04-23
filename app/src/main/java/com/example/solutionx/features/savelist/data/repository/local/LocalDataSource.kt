@@ -5,7 +5,7 @@ import com.example.solutionx.common.domain.repository.loca.localds.ILocalDSProvi
 import com.example.solutionx.features.savelist.domain.repository.local.ILocalDataSource
 import javax.inject.Inject
 
-class LocalDataSource @Inject constructor(private val localDSProvider: ILocalDSProvider) :
+class LocalDataSource (private val localDSProvider: ILocalDSProvider) :
     ILocalDataSource {
     override suspend fun saveList(list: List<String>) {
         localDSProvider.save(StorageKeyEnum.NAMES, list.joinToString())

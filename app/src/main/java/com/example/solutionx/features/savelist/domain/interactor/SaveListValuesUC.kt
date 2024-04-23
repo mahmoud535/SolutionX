@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class SaveListValuesUC @Inject constructor(private val repository: ISaveListRepository) {
+class SaveListValuesUC (private val repository: ISaveListRepository) {
 
     operator fun invoke(
         scope: CoroutineScope,

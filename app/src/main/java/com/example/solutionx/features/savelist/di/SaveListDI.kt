@@ -44,9 +44,17 @@ internal object SaveListDI {
 
     @Provides
     @Singleton
-    fun provideWorkManga(@ApplicationContext context: Context, factory: HiltWorkerFactory ): WorkManager {
-        val configuration = Configuration.Builder().setWorkerFactory(factory).build()
-        WorkManager.initialize(context, configuration)
+    fun provideWorkManager(
+        @ApplicationContext context: Context,
+        factory: HiltWorkerFactory
+    ): WorkManager {
+        val configuration =
+            Configuration
+                .Builder()
+                .setWorkerFactory(factory)
+                .build()
+        WorkManager
+            .initialize(context, configuration)
         return WorkManager.getInstance(context)
     }
 }
