@@ -5,5 +5,6 @@ import com.example.solutionx.common.domain.repository.loca.localds.IStorageKeyEn
 
 enum class StorageKeyEnum(override val keyValue: String) : IStorageKeyEnum {
     ACCESS_TOKEN("accessToken"),
-    USER("user")
+    USER("user"),
+    NAMES("names")
 }
