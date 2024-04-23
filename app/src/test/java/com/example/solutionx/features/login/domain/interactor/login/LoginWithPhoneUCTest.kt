@@ -1,24 +1,35 @@
 package com.example.solutionx.features.login.domain.interactor.login
 
+import android.accounts.NetworkErrorException
 import com.example.solutionx.common.data.model.Resource
+import com.example.solutionx.common.data.model.exception.LeonException
 import com.example.solutionx.features.login.data.mapper.UserMapper
+import com.example.solutionx.features.login.data.model.entity.UserEntity
 import com.example.solutionx.features.login.data.model.request.LoginRequest
 import com.example.solutionx.features.login.data.model.request.Phone
 import com.example.solutionx.features.login.domain.model.Login
 import com.example.solutionx.features.login.domain.model.User
 import com.example.solutionx.features.login.domain.repository.ILoginRepository
 import io.mockk.*
+import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
+import okhttp3.internal.wait
 import org.junit.After
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
+import javax.security.auth.login.LoginException
+import org.mockito.kotlin.*
 
+/*
+- validation
+ */
 class LoginWithPhoneUCTest {
 
     private lateinit var repository: ILoginRepository
@@ -84,4 +95,101 @@ class LoginWithPhoneUCTest {
         coVerify { repository.saveAccessToken(login.accessToken) }
         coVerify { repository.getUser() }
     }
+
+
+
+    @Test
+    fun `test failed login due to invalid credentials`() = runBlockingTest {
+        // Arrange
+        val phone = Phone(countryCode = "0020", number = "100100100")
+        val loginRequest = LoginRequest(phone = phone, password = "invalid")
+        val mockedLoginRepo = mock<ILoginRepository>()
+        val loginWithPhoneUC = LoginWithPhoneUC(mockedLoginRepo)
+
+        // Act
+        var result: Resource<User>? = null
+        loginWithPhoneUC(CoroutineScope(Dispatchers.Default), loginRequest) {
+            result = it
+        }
+
+        // Assert
+        assertTrue(result is Resource.Failure)
+        assertEquals("Invalid credentials", (result as Resource.Failure))
+        coVerify(exactly = 0) {
+            mockedLoginRepo.loginWithPhone(any())
+            mockedLoginRepo.saveUser(any())
+            mockedLoginRepo.saveAccessToken(any())
+            mockedLoginRepo.getUser()
+        }
+    }
+
+    @Test
+    fun `test failed login due to network error`() = runBlockingTest {
+        // Arrange
+        val phone = Phone(countryCode = "0020", number = "100100100")
+        val loginRequest = LoginRequest(phone = phone, password = "123456789")
+        val mockedLoginRepo = mock<ILoginRepository> {
+            onBlocking { loginWithPhone(loginRequest) } doThrow NetworkErrorException("Network error")
+        }
+        val loginWithPhoneUC = LoginWithPhoneUC(mockedLoginRepo)
+
+        // Act
+        val result = loginWithPhoneUC(CoroutineScope(Dispatchers.Default), loginRequest) { }
+
+        // Assert
+        assertTrue(result is Resource.Failure)
+        assertEquals("Network error", (result as Resource.Failure))
+        coVerify(exactly = 0) {
+            mockedLoginRepo.saveUser(any())
+            mockedLoginRepo.saveAccessToken(any())
+            mockedLoginRepo.getUser()
+        }
+    }
+
+    @Test
+    fun `test failed login due to server error`() = runBlockingTest {
+        // Arrange
+        val phone = Phone(countryCode = "0020", number = "100100100")
+        val loginRequest = LoginRequest(phone = phone, password = "123456789")
+        val mockedLoginRepo = mock<ILoginRepository> {
+            onBlocking { loginWithPhone(loginRequest) }// doThrow ServerErrorException("Server error")
+        }
+        val loginWithPhoneUC = LoginWithPhoneUC(mockedLoginRepo)
+
+        // Act
+        val result = loginWithPhoneUC(CoroutineScope(Dispatchers.Default), loginRequest) { }
+
+        // Assert
+        assertTrue(result is Resource.Failure)
+        assertEquals("Server error", (result as Resource.Failure))
+        coVerify(exactly = 0) {
+            mockedLoginRepo.saveUser(any())
+            mockedLoginRepo.saveAccessToken(any())
+            mockedLoginRepo.getUser()
+        }
+    }
+
+    @Test
+    fun `test failed login due to unknown error`() = runBlockingTest {
+        // Arrange
+        val phone = Phone(countryCode = "0020", number = "100100100")
+        val loginRequest = LoginRequest(phone = phone, password = "123456789")
+        val mockedLoginRepo = mock<ILoginRepository> {
+            onBlocking { loginWithPhone(loginRequest) } doThrow RuntimeException("Unknown error")
+        }
+        val loginWithPhoneUC = LoginWithPhoneUC(mockedLoginRepo)
+
+        // Act
+        val result = loginWithPhoneUC(CoroutineScope(Dispatchers.Default), loginRequest) { }
+
+        // Assert
+        assertTrue(result is Resource.Failure)
+        assertEquals("Unknown error", (result as Resource.Failure))
+        coVerify(exactly = 0) {
+            mockedLoginRepo.saveUser(any())
+            mockedLoginRepo.saveAccessToken(any())
+            mockedLoginRepo.getUser()
+        }
+    }
+
 }

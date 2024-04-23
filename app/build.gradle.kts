@@ -99,6 +99,8 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics-buildtools:2.9.9")
     implementation("androidx.room:room-common:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
+    implementation("androidx.activity:activity:1.8.0")
+
 //    implementation("com.google.android.ads:mediation-test-suite:3.0.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
@@ -133,8 +135,11 @@ dependencies {
 //    kapt ("androidx.room:room-compiler:2.6.1")
 
 //Dagger - Hilt
-    implementation ("com.google.dagger:hilt-android:2.51")
-    kapt ("com.google.dagger:hilt-compiler:2.51")
+    implementation ("com.google.dagger:hilt-android:2.48")
+    kapt ("com.google.dagger:hilt-android-compiler:2.48")
+    kapt ("androidx.hilt:hilt-compiler:1.2.0")
+    implementation ("androidx.hilt:hilt-work:1.0.0")
+    implementation ("androidx.startup:startup-runtime:1.1.1")
 //
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
@@ -161,6 +166,9 @@ dependencies {
     androidTestImplementation ("org.mockito:mockito-core:3.11.2")
     androidTestImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
     androidTestImplementation ("io.mockk:mockk:1.12.0") // MockK
+    // Add Mockito core library for mocking behavior
+// Add Mockito inline for mocking final classes or methods, if needed
+    androidTestImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
 //
     testImplementation ("org.mockito:mockito-core:3.11.2")
     testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
@@ -169,6 +177,10 @@ dependencies {
 
 
 //    androidTestImplementation "io.mockk:mockk-android:1.12.0"
+
+    // Kotlin + coroutines
+    implementation ("androidx.work:work-runtime-ktx:2.9.0")
+
 
 }
 

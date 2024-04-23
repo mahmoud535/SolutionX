@@ -34,7 +34,19 @@ class LocalDsProviderTest{
     fun testSaveAndGetAccessToken() {
         runBlocking {
             val key = StorageKeyEnum.ACCESS_TOKEN
-            val value = "testAccessToken"
+            val value = ""
+
+            localDsProvider.save(key, value)
+            val retrievedValue: String = localDsProvider.get(key,"")
+
+            assertEquals(value, retrievedValue)
+        }
+    }
+    @Test
+    fun testNullAndGetAccessToken() {
+        runBlocking {
+            val key = StorageKeyEnum.ACCESS_TOKEN
+            val value = null
 
             localDsProvider.save(key, value)
             val retrievedValue: String = localDsProvider.get(key,"")
