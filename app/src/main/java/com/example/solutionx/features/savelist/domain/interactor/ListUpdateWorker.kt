@@ -25,18 +25,22 @@ class ListUpdateWorker @AssistedInject constructor(
 
     override suspend fun doWork(): Result {
             return try {
-                val names = inputData.getStringArray(KEY_NAMES_LIST)!!.toList()
-                saveListValuesUC(CoroutineScope(Dispatchers.IO) ,names ) {resource ->
+                val names = inputData.getStringArray(KEY_NAMES_LIST)?.toList()
+                if (names != null) {
+                    saveListValuesUC(CoroutineScope(Dispatchers.IO) ,names ) {resource ->
                         when (resource) {
                             is Resource.Success -> {
-                              logger.info("Success")
+                                logger.info("Success")
                             }
+
                             is Resource.Failure -> {
                                 logger.error("error in ListUpdateWorker")
                             }
+
                             is Resource.Progress -> { }
                         }
                     }
+                }
                 Result.success(
                     Data.Builder().putString("Success", "List updated Successfully")
                         .build()
