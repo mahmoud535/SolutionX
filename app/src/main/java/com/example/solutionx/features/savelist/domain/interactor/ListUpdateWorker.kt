@@ -24,7 +24,6 @@ class ListUpdateWorker @AssistedInject constructor(
 ) : CoroutineWorker(appContext, workerParams) {
 
     override suspend fun doWork(): Result {
-
             return try {
                 val names = inputData.getStringArray(KEY_NAMES_LIST)!!.toList()
                 saveListValuesUC(CoroutineScope(Dispatchers.IO) ,names ) {resource ->

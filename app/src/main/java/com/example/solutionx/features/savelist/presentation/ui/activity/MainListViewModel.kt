@@ -1,29 +1,19 @@
 package com.example.solutionx.features.savelist.presentation.ui.activity
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
 import androidx.work.Data
 import androidx.work.ExistingWorkPolicy
-import androidx.work.OneTimeWorkRequest
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
-import androidx.work.workDataOf
-import com.example.solutionx.android.helpers.logging.LoggerFactory
 import com.example.solutionx.common.data.model.Resource
-import com.example.solutionx.features.login.presentation.ui.activity.login.LoginState
 import com.example.solutionx.features.savelist.domain.interactor.ListUpdateWorker
 import com.example.solutionx.features.savelist.domain.interactor.ListUpdateWorker.Companion.KEY_NAMES_LIST
 import com.example.solutionx.features.savelist.domain.interactor.SaveListValuesUC
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -33,8 +23,8 @@ class MainListViewModel @Inject constructor(
     private val saveListValuesUC: SaveListValuesUC,
     private val workManager: WorkManager
 ) :  ViewModel() {
-    private val _state = MutableStateFlow<MainListState>(MainListState.IdleState)
-    val state: StateFlow<MainListState> get() = _state
+    private val _viewState = MutableStateFlow<MainListState>(MainListState.IdleState)
+    val viewState: StateFlow<MainListState> get() = _viewState
 
 
     fun handleIntent(intent: MainListIntent) {
@@ -46,14 +36,14 @@ class MainListViewModel @Inject constructor(
 
     private fun saveNames(names: List<String>) {
         viewModelScope.launch {
-            _state.value = MainListState.Loading
+            _viewState.value = MainListState.Loading
             saveListValuesUC(viewModelScope, names) { resource ->
                  when (resource) {
                     is Resource.Success -> {
-                        _state.update{ MainListState.Success(resource.model) }
+                        _viewState.update{ MainListState.Success(resource.model) }
                     }
-                    is Resource.Failure -> _state.update { MainListState.Error(resource.exception) }
-                    is Resource.Progress ->  _state.update { MainListState.Loading }
+                    is Resource.Failure -> _viewState.update { MainListState.Error(resource.exception) }
+                    is Resource.Progress ->  _viewState.update { MainListState.Loading }
                 }
             }
         }
@@ -69,10 +59,10 @@ class MainListViewModel @Inject constructor(
                 .observeForever { workInfo ->
                     when (workInfo?.state) {
                         WorkInfo.State.SUCCEEDED -> {
-                            _state.value = MainListState.Success(names)
+                            _viewState.value = MainListState.Success(names)
                         }
                         WorkInfo.State.FAILED -> {
-                            _state.value = MainListState.Error(Exception("Failed to update names list"))
+                            _viewState.value = MainListState.Error(Exception("Failed to update names list"))
                         }
                         else -> {  }
                     }

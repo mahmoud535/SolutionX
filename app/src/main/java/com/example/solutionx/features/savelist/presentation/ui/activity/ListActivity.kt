@@ -10,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import com.example.solutionx.R
 import com.example.solutionx.android.helpers.logging.LoggerFactory
 import com.example.solutionx.databinding.ActivityList2Binding
-import com.example.solutionx.features.savelist.domain.interactor.ListUpdateWorker
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -35,22 +34,22 @@ class ListActivity : AppCompatActivity() {
         observeState()
     }
 
-    private fun  observeState() {
+    private fun observeState() {
         lifecycleScope.launch {
-            viewModel.state .collect { state ->
+            viewModel.viewState.collect { state ->
                 when (state) {
-                    is MainListState.Loading -> { }
+                    is MainListState.Loading -> {}
                     is MainListState.Success -> {
                         val data = state.data
-                        for (name in data) {
-                            logger.info("workInfo: $name")
-                        }
+                        logger.info("workInfo: $data")
                     }
+
                     is MainListState.Error -> {
                         val error = state.error
-                        logger.error("Error: ",error)
+                        logger.error("Error: ", error)
                     }
-                    is MainListState.IdleState -> { }
+
+                    is MainListState.IdleState -> {}
                 }
             }
         }
@@ -59,11 +58,27 @@ class ListActivity : AppCompatActivity() {
 
     private fun setupButtons() {
         binding.setNamesButton.setOnClickListener {
-            val intent = MainListIntent.SaveNamesIntent(listOf("mahmoud", "Ali","Mostafa", "Kareem", "Ahmed"))
+            val intent = MainListIntent.SaveNamesIntent(
+                listOf(
+                    "mahmoud",
+                    "Ali",
+                    "Mostafa",
+                    "Kareem",
+                    "Ahmed"
+                )
+            )
             viewModel.handleIntent(intent)
         }
         binding.updateListButton.setOnClickListener {
-            val intent = MainListIntent.UpdateNamesListIntent(listOf("مصطفى ","كريم" , "احمد", "على","محمود"))
+            val intent = MainListIntent.UpdateNamesListIntent(
+                listOf(
+                    "مصطفى ",
+                    "كريم",
+                    "احمد",
+                    "على",
+                    "محمود"
+                )
+            )
             viewModel.handleIntent(intent)
         }
     }
