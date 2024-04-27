@@ -1,5 +1,6 @@
 package com.example.solutionx.features.savelist.presentation.ui.activity
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.work.Data
@@ -7,13 +8,17 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
+import com.example.solutionx.android.helpers.logging.LoggerFactory
+import com.example.solutionx.android.helpers.logging.writers.LogcatWriter
 import com.example.solutionx.common.data.model.Resource
+import com.example.solutionx.features.login.presentation.util.Constants
 import com.example.solutionx.features.savelist.domain.interactor.ListUpdateWorker
-import com.example.solutionx.features.savelist.domain.interactor.ListUpdateWorker.Companion.KEY_NAMES_LIST
 import com.example.solutionx.features.savelist.domain.interactor.SaveListValuesUC
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,28 +27,40 @@ import javax.inject.Inject
 class MainListViewModel @Inject constructor(
     private val saveListValuesUC: SaveListValuesUC,
     private val workManager: WorkManager
-) :  ViewModel() {
+) : ViewModel() {
     private val _viewState = MutableStateFlow<MainListState>(MainListState.IdleState)
     val viewState: StateFlow<MainListState> get() = _viewState
 
 
     fun handleIntent(intent: MainListIntent) {
         when (intent) {
-            is MainListIntent.SaveNamesIntent -> saveNames(intent.names)
+            is MainListIntent.SaveNamesIntent -> saveNames(intent)
             is MainListIntent.UpdateNamesListIntent -> updateNamesList(intent.names)
         }
     }
 
-    private fun saveNames(names: List<String>) {
+    private fun saveNames(intent: MainListIntent.SaveNamesIntent) {
         viewModelScope.launch {
-            _viewState.value = MainListState.Loading
-            saveListValuesUC(viewModelScope, names) { resource ->
-                 when (resource) {
+            saveListValuesUC.saveList(intent.names)
+            getNamesList()
+        }
+    }
+
+    private fun getNamesList() {
+        viewModelScope.launch {
+            saveListValuesUC.getList().collect { resource ->
+                when (resource) {
                     is Resource.Success -> {
-                        _viewState.update{ MainListState.Success(resource.model) }
+                        val data = resource.model
+                        _viewState.value = MainListState.Success(data)
                     }
-                    is Resource.Failure -> _viewState.update { MainListState.Error(resource.exception) }
-                    is Resource.Progress ->  _viewState.update { MainListState.Loading }
+
+                    is Resource.Failure -> {
+                        val error = resource.exception
+                        _viewState.value = MainListState.Error(error)
+                    }
+
+                    else -> {}
                 }
             }
         }
@@ -61,26 +78,68 @@ class MainListViewModel @Inject constructor(
                         WorkInfo.State.SUCCEEDED -> {
                             _viewState.value = MainListState.Success(names)
                         }
+
                         WorkInfo.State.FAILED -> {
-                            _viewState.value = MainListState.Error(Exception("Failed to update names list"))
+                            _viewState.value =
+                                MainListState.Error(Exception("Failed to update names list"))
                         }
-                        else -> {  }
+
+                        else -> {}
                     }
                 }
             workManager.enqueueUniqueWork(
-                "updateListValuesWorker",
+                Constants.WORK_NAME,
                 ExistingWorkPolicy.KEEP,
-                workRequest)
+                workRequest
+            )
+
+            workManager.getWorkInfoByIdFlow(workRequest.id).collect { workInfo ->
+                if (workInfo != null) {
+                    when (workInfo.state) {
+                        WorkInfo.State.ENQUEUED -> {
+                            logger.debug(String::class.java, "Worker is ENQUEUED")
+                        }
+
+                        WorkInfo.State.RUNNING -> {
+                            logger.debug(String::class.java, "Worker is RUNNING")
+                        }
+
+                        WorkInfo.State.SUCCEEDED -> {
+                            workManager.cancelWorkById(workRequest.id)
+                            logger.debug(String::class.java, "Worker is SUCCEEDED")
+                            logger.debug(String::class.java, "List updated Successfully..")
+                        }
+
+                        WorkInfo.State.FAILED -> {
+                            logger.debug(String::class.java, "Worker is FAILED")
+                        }
+
+                        WorkInfo.State.BLOCKED -> {
+                            logger.debug(String::class.java, "Worker is BLOCKED")
+                        }
+
+                        WorkInfo.State.CANCELLED -> {
+                            logger.debug(String::class.java, "Worker is CANCELLED")
+                        }
+                    }
+                }else {
+                    logger.error("workInfo is null")
+                }
+            }
+            }
         }
-    }
 
-    private fun createInputData(names: List<String>): Data {
-        val inputDataBuilder = Data.Builder()
-        inputDataBuilder.putStringArray(KEY_NAMES_LIST, names.toTypedArray())
-        return inputDataBuilder.build()
-    }
+        private fun createInputData(names: List<String>): Data {
+            val inputDataBuilder = Data.Builder()
+            inputDataBuilder.putStringArray(ListUpdateWorker.KEY_NAMES_LIST, names.toTypedArray())
+            return inputDataBuilder.build()
+        }
 
-}
+        companion object {
+            private val logger = LoggerFactory.getLogger(ListActivity::class.java)
+        }
+
+    }
 
 
 

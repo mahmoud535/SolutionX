@@ -1,17 +1,23 @@
 package com.example.solutionx.features.savelist.presentation.ui.activity
 
+import android.content.res.Configuration
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.solutionx.R
 import com.example.solutionx.android.helpers.logging.LoggerFactory
+import com.example.solutionx.common.data.model.Resource
 import com.example.solutionx.databinding.ActivityList2Binding
+import com.example.solutionx.features.savelist.domain.interactor.ListUpdateWorker
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 @AndroidEntryPoint
 class ListActivity : AppCompatActivity() {
@@ -32,13 +38,13 @@ class ListActivity : AppCompatActivity() {
 
         setupButtons()
         observeState()
+
     }
 
     private fun observeState() {
         lifecycleScope.launch {
             viewModel.viewState.collect { state ->
                 when (state) {
-                    is MainListState.Loading -> {}
                     is MainListState.Success -> {
                         val data = state.data
                         logger.info("workInfo: $data")
@@ -48,13 +54,13 @@ class ListActivity : AppCompatActivity() {
                         val error = state.error
                         logger.error("Error: ", error)
                     }
+                    else -> {
 
-                    is MainListState.IdleState -> {}
+                    }
                 }
             }
         }
     }
-
 
     private fun setupButtons() {
         binding.setNamesButton.setOnClickListener {

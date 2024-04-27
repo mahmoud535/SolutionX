@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.doublePreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.floatPreferencesKey
 import androidx.datastore.preferences.core.intPreferencesKey
@@ -18,11 +19,11 @@ import com.example.solutionx.features.login.presentation.util.Constants
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 
-internal class LocalDsProvider(private val context: Context) : ILocalDSProvider {
+internal class  LocalDsProvider(private val context: Context) : ILocalDSProvider {
 
 
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
-      name =  Constants.DS_File
+        name =  Constants.DS_File
     )
 
     override suspend fun <Model> save(key: IStorageKeyEnum, data: Model) {

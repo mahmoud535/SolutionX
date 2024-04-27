@@ -12,7 +12,7 @@ class Logger(private val clazz: Class<*>) {
     val isDebugEnabled: Boolean
         get() = LoggerFactory.currentLogWriter.isDebugEnabled
 
-    fun debug(message: String?) {
+    fun debug(message1: Class<String>, message: String?) {
         LoggerFactory.currentLogWriter.debug(clazz, message)
     }
 

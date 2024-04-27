@@ -251,3 +251,11 @@ capp/src/main/java/com/example/solutionx/features/savelist/presentation/ui/activ
 eapp/src/main/java/com/example/solutionx/features/savelist/domain/repository/local/ILocalDataSource.kt,c\2\c22d2f5fb152aa087ad074feb7420ea347f1f2ae
 ’
 bapp/src/main/java/com/example/solutionx/features/savelist/data/repository/local/LocalDataSource.kt,9\6\9684ec0cbaa8a0b3517fb43108207c878726a57b
+•
+eapp/src/main/java/com/example/solutionx/features/savelist/presentation/ui/activity/ListValuesEvent.kt,0\2\02f8972ad3976bc2b432c26449116854c35d6c2a
+Ž
+^app/src/main/java/com/example/solutionx/features/savelist/domain/interactor/GetListValuesUC.kt,2\b\2b45974e482851ec8685e6a516ec571fc4bf27b9
+€
+Papp/src/main/java/com/example/solutionx/features/savelist/di/ListValuesModule.kt,a\8\a836b25243ead12385ad075a00e9e34923b31424
+|
+Lapp/src/main/java/com/example/solutionx/features/savelist/di/WorkerModule.kt,8\8\88195dec5ddd21a0276ecb2f635ac590de4d1323
