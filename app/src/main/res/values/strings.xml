@@ -25,4 +25,15 @@
     <string name="password">Password</string>
     <string name="unsupported_type">Unsupported type…</string>
 
+
+    <string name="un_supported_type" translatable="false">unSupportedError</string>
+    <string name="James" translatable="false">James</string>
+    <string name="Robert" translatable="false">Robert</string>
+    <string name="John" translatable="false">John</string>
+    <string name="Michael" translatable="false">Michael</string>
+    <string name="David" translatable="false">David</string>
+    <string name="William" translatable="false">William</string>
+    <string name="Richard" translatable="false">Richard</string>
+    <string name="Joseph" translatable="false">Joseph</string>
+
 </resources>

@@ -26,4 +26,15 @@
     <string name="email">بريد إلكتروني</string>
     <string name="password">كلمة المرور</string>
 
+
+
+    <string name="James" translatable="false">جيمس</string>
+    <string name="Robert" translatable="false">روبرت</string>
+    <string name="John" translatable="false">جون</string>
+    <string name="Michael" translatable="false">ميخائيل</string>
+    <string name="David" translatable="false">ديفيد</string>
+    <string name="William" translatable="false">ويليم</string>
+    <string name="Richard" translatable="false">ريتشارد</string>
+    <string name="Joseph" translatable="false">جوزيف</string>
+
 </resources>

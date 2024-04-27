@@ -8,10 +8,9 @@ plugins {
     id("com.google.dagger.hilt.android")
 
 
-
 //    id ("androidx.room")
-   // id("kotlin-kapt")
-  //  id ("dagger.hilt.android.plugin")
+    // id("kotlin-kapt")
+    //  id ("dagger.hilt.android.plugin")
 }
 
 android {
@@ -99,7 +98,8 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics-buildtools:2.9.9")
     implementation("androidx.room:room-common:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
-//    implementation("com.google.android.ads:mediation-test-suite:3.0.0")
+    implementation("androidx.activity:activity:1.8.0")
+
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -116,50 +116,51 @@ dependencies {
 //    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 //
     // gson
-    implementation ("com.google.code.gson:gson:2.10.1")
+    implementation("com.google.code.gson:gson:2.10.1")
 
     //Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
     //Gson converter
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.2.2")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.2.2")
     // coroutines(with retrofit)
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
-//
-//    // room
-//    implementation ("androidx.room:room-runtime:2.6.1")
-//    annotationProcessor ("androidx.room:room-compiler:2.6.1")
 
-//    kapt ("androidx.room:room-compiler:2.6.1")
+    //Dagger - Hilt
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
+    kapt("androidx.hilt:hilt-compiler:1.2.0")
+    implementation("androidx.hilt:hilt-work:1.0.0")
+    implementation("androidx.startup:startup-runtime:1.1.1")
 
-//Dagger - Hilt
-    implementation ("com.google.dagger:hilt-android:2.51")
-    kapt ("com.google.dagger:hilt-compiler:2.51")
-//
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-ktx:1.8.2")
-    implementation ("androidx.fragment:fragment-ktx:1.6.2")
-
-
-//    // Material
-//    implementation("libs.material")
-//
-//    // Kotlin Reflect
-//    implementation("libs.kotlin.reflect")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
 
     //interceptor
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.2")
 
+    //DataStore
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 
-   //DataStore
-    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.23")
 
-    implementation ("org.jetbrains.kotlin:kotlin-reflect:1.9.23")
+    //Mockito
+    androidTestImplementation("org.mockito:mockito-core:3.11.2")
+    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    androidTestImplementation("io.mockk:mockk:1.12.0")
+    androidTestImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
 
-    testImplementation ("org.mockito:mockito-core:2.19.0")
-    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0")
+    testImplementation("org.mockito:mockito-core:3.11.2")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation("io.mockk:mockk:1.12.0") // MockK
+    testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
+
+    // Kotlin + coroutines
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+
 
 }
 
