@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".features.login.presentation.ui.fragment.login.LoginFragment">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title"
+        style="@style/TextView.Medium"
+        android:layout_marginTop="@dimen/_140sdp"
+        android:text="Solutionx"
+        android:textSize="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_email_Client"
+        style="@style/EditText"
+        android:hint="Phone"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_CountruCode"
+        style="@style/EditText"
+        android:hint="@string/email"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_email_Client" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_password"
+        style="@style/EditText"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_CountruCode" />
+
+
+    <!--    <com.example.solutionx.utils.MSPTextViewBold-->
+    <!--        android:id="@+id/tv_Languages"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentEnd="true"-->
+    <!--        android:layout_alignParentRight="true"-->
+    <!--        android:foreground="?attr/selectableItemBackgroundBorderless"-->
+    <!--        android:text="Languages"-->
+    <!--        android:textColor="@color/colorSecondaryText"-->
+    <!--        android:textStyle="bold"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/tv_title"-->
+    <!--        app:layout_constraintEnd_toEndOf="@+id/et_email_Client"-->
+    <!--        app:layout_constraintHorizontal_bias="0.0"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/et_email_Client" />-->
+
+    <ImageView
+        android:id="@+id/iv_Languages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/language_24"
+        app:layout_constraintBottom_toTopOf="@+id/et_email_Client"
+        app:layout_constraintEnd_toEndOf="@+id/et_email_Client"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintStart_toStartOf="@+id/et_email_Client" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_forgot_password"
+        style="@style/TextView"
+        android:text="@string/lbl_forgot_password"
+        android:textColor="@color/colorSecondaryText"
+        android:textSize="@dimen/forgot_password_textSize"
+        android:layout_marginEnd="@dimen/_30sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_password" />
+
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/Button.Secondary"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/login_client"
+        android:textSize="@dimen/btn_textSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_forgot_password" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_login">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_don_t_have_an_account"
+            style="@style/TextView"
+            android:padding="@dimen/clickable_text_view_padding"
+            android:text="@string/don_t_have_an_account"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="@dimen/lbl_text_view_textSize" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_register"
+            style="@style/TextView.Bold"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="@dimen/clickable_text_view_padding"
+            android:text="@string/register"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="@dimen/lbl_text_view_textSize" />
+    </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ plugins {
     id("kotlin-parcelize")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    id ("androidx.navigation.safeargs")
 
 
 //    id ("androidx.room")
@@ -99,6 +100,8 @@ dependencies {
     implementation("androidx.room:room-common:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("androidx.activity:activity:1.8.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
@@ -161,7 +164,8 @@ dependencies {
     // Kotlin + coroutines
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
-
+    //swipe to refresh
+    implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 }
 
 kapt {

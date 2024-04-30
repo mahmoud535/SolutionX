@@ -18,27 +18,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SolutionX"
         tools:targetApi="31">
+
         <activity
-            android:name=".features.savelist.presentation.ui.activity.ListActivity"
-            android:exported="true" >
+            android:name=".presentation.ui.activity.main.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".features.services.presentation.ui.activity.list.ListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".features.login.presentation.ui.activity.login.LoginActivity"
-            android:exported="true">
-
-        </activity>
-        <activity
-            android:name=".presentation.ui.activity.main.MainActivity"
-            android:exported="true">
-
         </activity>
 
         <provider

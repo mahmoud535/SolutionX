@@ -35,5 +35,14 @@
     <string name="William" translatable="false">William</string>
     <string name="Richard" translatable="false">Richard</string>
     <string name="Joseph" translatable="false">Joseph</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ok">OK</string>
+    <string name="not_found">Not Found</string>
+    <string name="resource_not_found">Resource not found</string>
+    <string name="unauthorized">Unauthorized</string>
+    <string name="unauthorized_access">Unauthorized access</string>
+    <string name="unknown_error">Unknown Error</string>
+    <string name="unknown_error_occurred">Unknown error occurred</string>
 
 </resources>
