@@ -93,14 +93,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(
         setRefreshing(false)
     }
 
-    override fun setSwipeRefreshEnabled(enabled: Boolean) {
-        swipeRefreshLayout?.isEnabled = enabled
-    }
-
-    override fun setRefreshing(refreshing: Boolean) {
-        swipeRefreshLayout?.isRefreshing = refreshing
-    }
-
     private fun validateLoginDetails(): Boolean {
         return when {
             TextUtils.isEmpty(binding.etEmailClient.text.toString().trim { it <= ' ' }) -> {

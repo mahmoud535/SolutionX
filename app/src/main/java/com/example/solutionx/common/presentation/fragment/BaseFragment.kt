@@ -126,15 +126,15 @@ abstract class BaseFragment<VB : ViewBinding>(
     }
 
     var swipeRefreshLayout: SwipeRefreshLayout? = null
-    abstract fun onRefresh()
-    open fun setSwipeRefreshEnabled(enabled: Boolean) {
+     abstract fun onRefresh()
+     fun setSwipeRefreshEnabled(enabled: Boolean) {
         swipeRefreshLayout?.isEnabled = enabled
     }
-    open fun setRefreshing(refreshing: Boolean) {
+     fun setRefreshing(refreshing: Boolean) {
         swipeRefreshLayout?.isRefreshing = refreshing
     }
 
-    open fun handleException(exception: LeonException) {
+     fun handleException(exception: LeonException) {
         when (exception) {
             is LeonException.Network -> {
                 when (exception) {
