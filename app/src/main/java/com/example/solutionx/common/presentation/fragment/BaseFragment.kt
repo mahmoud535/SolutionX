@@ -139,16 +139,16 @@ abstract class BaseFragment<VB : ViewBinding>(
             is LeonException.Network -> {
                 when (exception) {
                     is LeonException.Network.Retrial -> {
-                        showAlertDialog(exception.messageRes, " ")
+                        showAlertDialog(exception.messageRes, "A network error occurred. Please retry.")
                     }
                     is LeonException.Network.Unhandled -> {
-                        showAlertDialog(exception.messageRes, " ")
+                        showAlertDialog(exception.messageRes, "An unhandled network error occurred. Please try again later.")
                     }
                 }
             }
-            is LeonException.Client -> { }
             is LeonException.Server -> {
                 if (exception is LeonException.Server.InternalServerError) {
+                    showAlertDialog(R.string.internal_server_error, "Internal server error occurred. Please try again later.")
                 } else if (exception is retrofit2.HttpException) {
                     val httpErrorCode = exception.code()
                     when (httpErrorCode) {
@@ -158,19 +158,16 @@ abstract class BaseFragment<VB : ViewBinding>(
                         401 -> {
                             showAlertDialog(R.string.unauthorized, "Unauthorized access")
                         }
-                        else -> {
-
-                        }
+                        else -> { }
                     }
                 }
             }
-            is LeonException.Local -> { }
             is LeonException.Unknown -> {
                 showAlertDialog(R.string.unknown_error, "Unknown error occurred")
             }
-            is LeonException.Client.ResponseValidation -> { }
-
+            else -> { }
         }
     }
+
 
 }
