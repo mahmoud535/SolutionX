@@ -253,3 +253,15 @@ dapp/src/main/java/com/example/solutionx/features/savelist/presentation/ui/fragm
 Vapp/src/main/java/com/example/solutionx/common/presentation/viewModel/BaseViewModel.kt,4\f\4f0ef5c0dd0a8460462ab2e25604895564433b1b
 ö
 japp/src/main/java/com/example/solutionx/features/login/presentation/ui/fragment/login/LanguageViewModel.kt,4\1\4177adfb99650b5e4a7ede6f69547782789a68b9
+ç
+]app/src/main/java/com/example/solutionx/common/presentation/fragment/IBaseFragmentDelegate.kt,4\a\4aa6626bc07bbcffb4c2b1380c725bd13f793799
+å
+\app/src/main/java/com/example/solutionx/common/presentation/fragment/BaseFragmentDelegate.kt,6\8\6882fe00d32aa8f722a8165a2672f4cda1bbaf10
+Ç
+Rapp/src/main/java/com/example/solutionx/common/presentation/logger/IStateLogger.kt,8\5\859f104d76613cda25637759b6770741145b9ada
+Å
+Qapp/src/main/java/com/example/solutionx/common/presentation/logger/StateLogger.kt,c\f\cf3e3aa25d528000295a63951d527756b3ec43b6
+â
+Yapp/src/main/java/com/example/solutionx/common/presentation/logger/ILoggerStateManager.kt,8\6\86feae29ae572cf064d9d026045a1be69815feab
+à
+Xapp/src/main/java/com/example/solutionx/common/presentation/logger/LoggerStateManager.kt,3\6\3600ecda1c071adf3a3c0eeca85e7d7cdbe4a18b

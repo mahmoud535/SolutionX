@@ -8,34 +8,35 @@ import android.view.ViewGroup
 import androidx.fragment.app.ListFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.solutionx.R
 import com.example.solutionx.android.helpers.logging.LoggerFactory
+import com.example.solutionx.common.data.model.exception.LeonException
+import com.example.solutionx.common.presentation.fragment.BaseFragment
 import com.example.solutionx.databinding.FragmentListBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ListFragment : Fragment() {
+class ListFragment : BaseFragment<FragmentListBinding>(
+     FragmentListBinding::inflate
+) {
     private val viewModel: MainListViewModel by viewModels()
-    lateinit var binding: FragmentListBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentListBinding.inflate(layoutInflater)
-
-        setupButtons()
-        observeState()
+        super.onCreateView(inflater, container, savedInstanceState)
+        setUpActions()
         return binding.root
     }
 
+    override fun setUpActions() {
+        setUpObservers()
+        setUpListeners()
+    }
 
-    private fun observeState() {
+    override fun setUpObservers() {
         lifecycleScope.launch {
             viewModel.viewState.collect { state ->
                 when (state) {
@@ -43,45 +44,46 @@ class ListFragment : Fragment() {
                         val data = state.data
                         logger.info("workInfo: $data")
                     }
-
+                    is MainListState.Loading -> showProgressBar(resources.getString(R.string.please_wait))
                     is MainListState.Error -> {
+                        handleException(LeonException.Unknown(state.error.message))
                         val error = state.error
                         logger.error("Error: ", error)
                     }
                     else -> {
-
+//                        handleException(LeonException.Unknown("Unknown Error"))
                     }
                 }
             }
         }
     }
 
-    private fun setupButtons() {
+    override fun setUpListeners() {
         binding.setNamesButton.setOnClickListener {
-            val intent = MainListIntent.SaveNamesIntent(
-                listOf(
-                    "mahmoud",
-                    "Ali",
-                    "Mostafa",
-                    "Kareem",
-                    "Ahmed"
-                )
-            )
-            viewModel.handleIntent(intent)
+            saveNames()
         }
         binding.updateListButton.setOnClickListener {
-            val intent = MainListIntent.UpdateNamesListIntent(
-                listOf(
-                    "مصطفى ",
-                    "كريم",
-                    "احمد",
-                    "على",
-                    "محمود"
-                )
-            )
-            viewModel.handleIntent(intent)
+            updateNamesList()
         }
     }
+
+    private fun saveNames() {
+        val intent = MainListIntent.SaveNamesIntent(
+            listOf("mahmoud", "Ali", "Mostafa", "Kareem", "Ahmed")
+        )
+        viewModel.handleIntent(intent)
+    }
+
+    private fun updateNamesList() {
+        val intent = MainListIntent.UpdateNamesListIntent(
+            listOf("مصطفى ", "كريم", "احمد", "على", "محمود")
+        )
+        viewModel.handleIntent(intent)
+    }
+
+    override fun setUpRecyclerView() { }
+
+    override fun onRefresh() { }
 
     companion object {
         private val logger = LoggerFactory.getLogger(ListFragment::class.java)

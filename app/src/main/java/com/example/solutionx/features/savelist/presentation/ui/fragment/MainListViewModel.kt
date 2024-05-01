@@ -29,7 +29,6 @@ class MainListViewModel @Inject constructor(
 //    private val _viewState = MutableStateFlow<MainListState>(MainListState.IdleState)
 //    val viewState: StateFlow<MainListState> get() = _viewState
 
-
     override fun handleIntent(intent: MainListIntent) {
         when (intent) {
             is MainListIntent.SaveNamesIntent -> saveNames(intent)
@@ -52,12 +51,10 @@ class MainListViewModel @Inject constructor(
                         val data = resource.model
                         _viewState.value = MainListState.Success(data)
                     }
-
                     is Resource.Failure -> {
                         val error = resource.exception
                         _viewState.value = MainListState.Error(error)
                     }
-
                     else -> {}
                 }
             }

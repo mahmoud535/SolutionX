@@ -28,7 +28,6 @@ abstract class BaseFragment<VB : ViewBinding>(
     private var _binding: VB? = null
     val binding: VB
         get() = _binding ?: throw IllegalStateException("ViewBinding is not initialized")
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -45,12 +44,9 @@ abstract class BaseFragment<VB : ViewBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpActions()
-        setUpObservers()
-        setUpListeners()
-        setUpRecyclerView()
+
         swipeRefreshLayout =
-            requireView().findViewById<SwipeRefreshLayout>(R.id.swipe_refresh_layout)
+            requireView().findViewById(R.id.swipe_refresh_layout)
         swipeRefreshLayout?.setOnRefreshListener {
             onRefresh()
         }
@@ -76,8 +72,7 @@ abstract class BaseFragment<VB : ViewBinding>(
             .show()
     }
 
-    fun showErrorSnackBar( @StringRes messageRes: Int, errorMessage: Boolean) {
-        val message = getString(messageRes)
+    fun showErrorSnackBar( message: String, errorMessage: Boolean) {
         val snackBar = Snackbar.make(requireView(), message, Snackbar.LENGTH_LONG)
         val snackBarView = snackBar.view
 
@@ -101,16 +96,13 @@ abstract class BaseFragment<VB : ViewBinding>(
 
 
     private lateinit var mProgressDialog: Dialog
-    fun showProgressBar(text: String) {
+    fun showProgressBar(message: String) {
         mProgressDialog = Dialog(requireActivity())
         mProgressDialog.setContentView(R.layout.dialog_progress)
-        // Find tv_progress_text within the Dialog's layout
         val tvProgressText = mProgressDialog.findViewById<TextView>(R.id.tv_progress_text)
-        tvProgressText.text = text
+        tvProgressText.text = message
         mProgressDialog.setCancelable(false)
         mProgressDialog.setCanceledOnTouchOutside(false)
-
-        //start the dialog and display it on screen.
         mProgressDialog.show()
     }
 
@@ -136,71 +128,50 @@ abstract class BaseFragment<VB : ViewBinding>(
         Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 
-    private var swipeRefreshLayout: SwipeRefreshLayout? = null
-
-    // Abstract function to handle swipe-to-refresh action
+    var swipeRefreshLayout: SwipeRefreshLayout? = null
     abstract fun onRefresh()
-
-    // Function to enable/disable swipe-to-refresh
-    protected fun setSwipeRefreshEnabled(enabled: Boolean) {
+    open fun setSwipeRefreshEnabled(enabled: Boolean) {
         swipeRefreshLayout?.isEnabled = enabled
     }
-
-    // Function to show/hide the refresh indicator
-    protected fun setRefreshing(refreshing: Boolean) {
+    open fun setRefreshing(refreshing: Boolean) {
         swipeRefreshLayout?.isRefreshing = refreshing
     }
 
-
-    protected open fun handleException(exception: LeonException) {
-        // Handle exceptions here
+    open fun handleException(exception: LeonException) {
         when (exception) {
             is LeonException.Network -> {
-                // Handle network exceptions
                 when (exception) {
                     is LeonException.Network.Retrial -> {
                         showAlertDialog(exception.messageRes, " ")
                     }
-
                     is LeonException.Network.Unhandled -> {
                         showAlertDialog(exception.messageRes, " ")
                     }
                 }
             }
-
-            is LeonException.Client -> {
-
-            }
-
+            is LeonException.Client -> { }
             is LeonException.Server -> {
                 if (exception is LeonException.Server.InternalServerError) {
-                    // Handle internal server errors
                 } else if (exception is retrofit2.HttpException) {
                     val httpErrorCode = exception.code()
                     when (httpErrorCode) {
                         404 -> {
                             showAlertDialog(R.string.not_found, "Resource not found")
                         }
-
                         401 -> {
                             showAlertDialog(R.string.unauthorized, "Unauthorized access")
                         }
-
                         else -> {
 
                         }
                     }
                 }
             }
-
-            is LeonException.Local -> {
-            }
-
+            is LeonException.Local -> { }
             is LeonException.Unknown -> {
                 showAlertDialog(R.string.unknown_error, "Unknown error occurred")
             }
-
-            is LeonException.Client.ResponseValidation -> {}
+            is LeonException.Client.ResponseValidation -> { }
 
         }
     }

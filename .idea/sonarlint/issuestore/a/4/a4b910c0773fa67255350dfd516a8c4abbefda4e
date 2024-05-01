@@ -1,3 +1,2 @@
 
-xkotlin:S63062"TUsing "GlobalScope" here leads to the breaking of structured concurrency principles.(š£Œúÿÿÿÿ8Ş‰ê÷ò1
-~kotlin:S1186O"ZAdd a nested comment explaining why this function is empty or complete the implementation.(ŞÈ¹§ÿÿÿÿÿ8í‰ê÷ò1
+xkotlin:S63064"TUsing "GlobalScope" here leads to the breaking of structured concurrency principles.(š£Œúÿÿÿÿ8ò¡–ó1
