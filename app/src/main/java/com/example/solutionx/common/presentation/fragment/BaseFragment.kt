@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewbinding.ViewBinding
 import com.example.solutionx.R
@@ -113,19 +115,14 @@ abstract class BaseFragment<VB : ViewBinding>(
     private var doubleBackToExitPressedOnce = false
     fun doubleBackToExit() {
         if (doubleBackToExitPressedOnce) {
-            requireActivity().onBackPressed()
+            findNavController().popBackStack()
             return
         }
         this.doubleBackToExitPressedOnce = true
+        Toast.makeText(context, resources.getString(R.string.please_click_back_again_to_exit), Toast.LENGTH_SHORT).show()
 
-        Toast.makeText(
-            requireContext(),
-            resources.getString(R.string.please_click_back_again_to_exit),
-            Toast.LENGTH_SHORT
-        ).show()
-
-        @Suppress("DEPRECATION")
-        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 
     var swipeRefreshLayout: SwipeRefreshLayout? = null
