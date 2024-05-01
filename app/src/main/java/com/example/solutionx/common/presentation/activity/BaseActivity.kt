@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.os.PersistableBundle
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -38,7 +39,6 @@ abstract class BaseActivity <VB : ViewBinding> (
     private var doubleBackToExitPressedOnce = false
     private lateinit var mProgressDialog: Dialog
 
-    //رساله تظهر لنا لمعرفت هل قمت بنسيان ملئ خانه من الخانات ام لا
     fun showErrorSnackBar(message: String,errorMessage: Boolean){
         val snackBar=
             Snackbar.make(findViewById(android.R.id.content),message, Snackbar.LENGTH_LONG)
@@ -85,16 +85,10 @@ abstract class BaseActivity <VB : ViewBinding> (
             return
         }
         this.doubleBackToExitPressedOnce=true
+        Toast.makeText(this, resources.getString(R.string.please_click_back_again_to_exit), Toast.LENGTH_SHORT).show()
 
-        Toast.makeText(
-            this,
-            resources.getString(R.string.please_click_back_again_to_exit),
-            Toast.LENGTH_SHORT
-        ).show()
-
-        @Suppress("DEPRECATION")
-        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
-
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 
 
