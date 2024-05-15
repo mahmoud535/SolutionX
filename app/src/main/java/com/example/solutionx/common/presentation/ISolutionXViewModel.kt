@@ -1,8 +1,5 @@
-package am.leon.solutionx.common.presentation
+package com.example.solutionx.common.presentation
 
-import com.example.solutionx.common.presentation.ViewAction
-import com.example.solutionx.common.presentation.ViewEvent
-import com.example.solutionx.common.presentation.ViewState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 

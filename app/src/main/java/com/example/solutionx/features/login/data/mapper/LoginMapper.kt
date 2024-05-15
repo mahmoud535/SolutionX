@@ -1,3 +1,4 @@
+
 package com.example.solutionx.features.login.data.mapper
 
 import com.example.solutionx.common.data.mapper.Mapper
@@ -14,6 +15,14 @@ internal object LoginMapper : Mapper<LoginDto, Login, LoginEntity>() {
             userInfo = UserMapper.dtoToDomain(model.user!!)
         )
     }
+
+//    override fun domainToDto(model: Login): LoginDto {
+//        return LoginDto(
+//            message = model.message.orEmpty(),
+//            token = model.accessToken.orEmpty(),
+//            user = UserMapper.domainToDto(model.userInfo!!)
+//        )
+//    }
 
     override fun domainToEntity(model: Login): LoginEntity {
         return LoginEntity(

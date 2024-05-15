@@ -1,11 +1,8 @@
-package am.leon.solutionx.common.presentation
+package com.example.solutionx.common.presentation
 
 import androidx.annotation.CallSuper
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.solutionx.common.presentation.ViewAction
-import com.example.solutionx.common.presentation.ViewEvent
-import com.example.solutionx.common.presentation.ViewState
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow

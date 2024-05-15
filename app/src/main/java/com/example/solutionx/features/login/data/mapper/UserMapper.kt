@@ -1,3 +1,4 @@
+
 package com.example.solutionx.features.login.data.mapper
 
 import com.example.solutionx.common.data.mapper.Mapper
@@ -10,16 +11,30 @@ internal object UserMapper : Mapper<UserDto, User, UserEntity>() {
     override fun dtoToDomain(model: UserDto): User {
         return User(
             id = model.id ?: 0,
-            userName = model.username.orEmpty() ,
+            userName = model.username.orEmpty(),
             fullName = "${model.firstname.orEmpty()} ${model.lastname.orEmpty()}",
             email = model.email.orEmpty(),
-            lastName = model.lastname.orEmpty() ,
+            lastName = model.lastname.orEmpty(),
             firstName = model.firstname.orEmpty(),
             middleName = model.middlename.orEmpty(),
             birthDate = model.birthdate.orEmpty(),
             phone = model.phone?.countryCode.orEmpty() + "-" + model.phone?.number.orEmpty()
         )
     }
+
+//    override fun domainToDto(model: User): UserDto {
+//        return UserDto(
+//            id = model.id ?: 0,
+//            username = model.userName.orEmpty(),
+//            fullName = "${model.firstName.orEmpty()} ${model.lastName.orEmpty()}",
+//            email = model.email.orEmpty(),
+//            lastname = model.lastName.orEmpty(),
+//            firstname = model.firstName.orEmpty(),
+//            middlename = model.middleName.orEmpty(),
+//            birthdate = model.birthDate.orEmpty(),
+////            phone = model.phone.orEmpty()
+//        )
+//    }
 
     override fun domainToEntity(model: User): UserEntity {
         return UserEntity(

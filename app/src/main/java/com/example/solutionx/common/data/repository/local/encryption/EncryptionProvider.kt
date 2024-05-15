@@ -15,7 +15,7 @@ class EncryptionProvider: IEncryptionProvider {
         load(null)
     }
 
-    private fun getKey(): SecretKey {
+     fun getKey(): SecretKey {
         val existingKey = keyStore.getEntry("secret_key", null) as? KeyStore.SecretKeyEntry
         return existingKey?.secretKey ?: createKey()
     }

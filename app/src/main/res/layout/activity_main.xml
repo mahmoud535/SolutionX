@@ -1,35 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
     tools:context=".presentation.ui.activity.main.MainActivity">
 
-    <com.google.android.material.textview.MaterialTextView
-        style="@style/TextView.Bold"
-        android:text="Hello World!"
-        android:textSize="20sp" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
 
-    <com.google.android.material.textview.MaterialTextView
-        style="@style/TextView"
-        android:text="This is a test app." />
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
 
-    <com.google.android.material.button.MaterialButton
-        style="@style/Button"
-        android:layout_marginTop="16dp"
-        android:text="Primary Button" />
-
-    <com.google.android.material.button.MaterialButton
-        style="@style/Button.Secondary"
-        android:layout_marginTop="16dp"
-        android:text="Secondary Button" />
-
-    <com.google.android.material.button.MaterialButton
-        style="@style/Button.Delete"
-        android:layout_marginTop="16dp"
-        android:text="Delete Button" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,4 @@
+
 package com.example.solutionx.features.login.domain.interactor.login
 
 import com.example.solutionx.common.data.model.Resource

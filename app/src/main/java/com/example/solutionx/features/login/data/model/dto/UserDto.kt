@@ -1,3 +1,4 @@
+
 package com.example.solutionx.features.login.data.model.dto
 
 import com.google.gson.annotations.SerializedName
@@ -30,5 +31,7 @@ internal data class UserDto(
     @SerializedName("phone_verified")
     val phoneVerified: Boolean? = null,
     @SerializedName("username")
-    val username: String? = null
+    val username: String? = null,
+    @SerializedName("fullName")
+    val fullName: String? = null,
 )

@@ -1,3 +1,4 @@
+
 package com.example.solutionx.features.login.data.model.dto
 
 import com.google.gson.annotations.SerializedName

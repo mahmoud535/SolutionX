@@ -25,4 +25,28 @@
     <string name="password">Password</string>
     <string name="unsupported_type">Unsupported type…</string>
 
+
+    <string name="un_supported_type" translatable="false">unSupportedError</string>
+    <string name="James" translatable="false">James</string>
+    <string name="Robert" translatable="false">Robert</string>
+    <string name="John" translatable="false">John</string>
+    <string name="Michael" translatable="false">Michael</string>
+    <string name="David" translatable="false">David</string>
+    <string name="William" translatable="false">William</string>
+    <string name="Richard" translatable="false">Richard</string>
+    <string name="Joseph" translatable="false">Joseph</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ok">OK</string>
+    <string name="not_found">Not Found</string>
+    <string name="resource_not_found">Resource not found</string>
+    <string name="unauthorized">Unauthorized</string>
+    <string name="unauthorized_access">Unauthorized access</string>
+    <string name="unknown_error">Unknown Error</string>
+    <string name="unknown_error_occurred">Unknown error occurred</string>
+    <string name="err_msg_enter_email">Please Enter phone</string>
+    <string name="err_msg_enter_password">Please Enter password</string>
+    <string name="err_msg_enter_countrycode">Please Enter Country Code</string>
+    <string name="internal_server_error">"Server Error "</string>
+
 </resources>
