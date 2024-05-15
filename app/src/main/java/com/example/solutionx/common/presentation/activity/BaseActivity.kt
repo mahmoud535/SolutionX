@@ -24,15 +24,19 @@ abstract class BaseActivity <VB : ViewBinding> (
 ): AppCompatActivity(){
 
     private var _binding: VB? = null
-    val binding :VB
+   protected val binding :VB
         get() = _binding as VB
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = bindingInflate.invoke(layoutInflater)
-        if (_binding == null)
-            throw IllegalArgumentException("Binding cannot be null")
+
         setContentView(binding.root)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 

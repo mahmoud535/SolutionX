@@ -1,19 +1,14 @@
 package com.example.solutionx.features.login.presentation.ui.fragment.login
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.solutionx.common.data.model.Resource
 import com.example.solutionx.common.presentation.viewModel.BaseViewModel
+import com.example.solutionx.features.login.data.model.request.LoginRequest
+import com.example.solutionx.features.login.data.model.request.Phone
 import com.example.solutionx.features.login.domain.interactor.login.LoginWithEmailUC
 import com.example.solutionx.features.login.domain.interactor.login.LoginWithPhoneUC
 import com.example.solutionx.features.login.domain.interactor.login.LoginWithSocialUC
-import com.example.solutionx.features.login.data.model.request.LoginRequest
-import com.example.solutionx.features.login.data.model.request.Phone
-import com.example.solutionx.features.savelist.presentation.ui.fragment.MainListIntent
-import com.example.solutionx.features.savelist.presentation.ui.fragment.MainListState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -12,6 +12,8 @@ class LocalDataSource (private val localDSProvider: ILocalDSProvider) :
     }
 
     override suspend fun getList(): List<String> {
-        return localDSProvider.get(StorageKeyEnum.NAMES, "").split(" ")
+//        return localDSProvider.get(StorageKeyEnum.NAMES, "").split(" ")
+        val data = localDSProvider.get(StorageKeyEnum.NAMES, "")
+        return data.split(" ")
     }
 }

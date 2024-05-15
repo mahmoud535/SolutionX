@@ -23,29 +23,32 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class LoginFragment : BaseFragment<FragmentLoginBinding>(
-    FragmentLoginBinding::inflate
-) , ILoggerStateManager by LoggerStateManager() {
+class LoginFragment : BaseFragment<FragmentLoginBinding>(), ILoggerStateManager by LoggerStateManager() {
 
 
     private val viewModel: LoginViewModel by viewModels()
     private val viewModelLanguage: LanguageViewModel by viewModels()
+    override val bindingClass = FragmentLoginBinding::class.java
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         attachLoggerToLifecycle(viewLifecycleOwner)
         setUpActions()
-        return binding.root
+        setSwipeRefreshEnabled(true)
     }
 
     override fun setUpActions() {
         getLanguage()
         setUpObservers()
         setUpListeners()
-        setUpRecyclerView()
     }
 
     override fun setUpObservers() {
@@ -75,7 +78,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(
             viewModel.handleIntent(
                 LoginIntent.LoginWithPhone(phoneNumber, countryCode, password)
             )
-            gotoMainFragment()
+//            gotoMainFragment()
         }
     }
 
@@ -83,10 +86,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(
         val actions =
             LoginFragmentDirections.actionLoginFragmentToMainFragment()
         view?.findNavController()?.navigate(actions)
-    }
-
-    override fun setUpRecyclerView() {
-        setSwipeRefreshEnabled(true)
     }
 
     override fun onRefresh() {
@@ -119,10 +118,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(
     private fun renderState(state: LoginState) {
         when (state) {
             is LoginState.Success -> {
-                hideProgressBar()
-                findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+//                hideProgressBar()
+//                findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
             }
-            is LoginState.Loading -> showProgressBar(resources.getString(R.string.please_wait))
+            is LoginState.Loading -> {
+//                showProgressBar(resources.getString(R.string.please_wait))
+            }
             is LoginState.Error -> {
                 hideProgressBar()
                 handleException(LeonException.Unknown(state.message))

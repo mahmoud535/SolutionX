@@ -1,0 +1,8 @@
+
+=kotlin:S125F"Remove this commented out code.(ñÕ” 8ÒÜÀê÷1
+=kotlin:S125J"Remove this commented out code.(¬ÀÀë8ÔÜÀê÷1
+Gkotlin:S108H")Either remove or fill this block of code.(°Æº¸8ÚÜÀê÷1
+xkotlin:S6306A"TUsing "GlobalScope" here leads to the breaking of structured concurrency principles.(š£Œúÿÿÿÿ8ÜÜÀê÷1
+9kotlin:S1128"Remove this unused import.(´Ùí8Ô­âé÷1
+9kotlin:S1128"Remove this unused import.(àŞÍú8ÚÅÀê÷1
+>kotlin:S1128"Remove this unused import.(•Áñüÿÿÿÿ8ÚÅÀê÷1

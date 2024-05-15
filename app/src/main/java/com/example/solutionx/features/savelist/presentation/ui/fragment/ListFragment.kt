@@ -1,10 +1,10 @@
 package com.example.solutionx.features.savelist.presentation.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.ListFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -13,22 +13,29 @@ import com.example.solutionx.android.helpers.logging.LoggerFactory
 import com.example.solutionx.common.data.model.exception.LeonException
 import com.example.solutionx.common.presentation.fragment.BaseFragment
 import com.example.solutionx.databinding.FragmentListBinding
+import com.example.solutionx.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ListFragment : BaseFragment<FragmentListBinding>(
-     FragmentListBinding::inflate
-) {
-    private val viewModel: MainListViewModel by viewModels()
+class ListFragment : BaseFragment<FragmentListBinding>(){
 
+    private val viewModel: MainListViewModel by viewModels()
+    override val bindingClass = FragmentListBinding::class.java
+//     lateinit var binding: FragmentListBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        setUpActions()
+//        binding = FragmentListBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+                setUpActions()
+        setSwipeRefreshEnabled(true)
     }
 
     override fun setUpActions() {
@@ -51,7 +58,6 @@ class ListFragment : BaseFragment<FragmentListBinding>(
                         logger.error("Error: ", error)
                     }
                     else -> {
-//                        handleException(LeonException.Unknown("Unknown Error"))
                     }
                 }
             }
@@ -80,8 +86,6 @@ class ListFragment : BaseFragment<FragmentListBinding>(
         )
         viewModel.handleIntent(intent)
     }
-
-    override fun setUpRecyclerView() { }
 
     override fun onRefresh() { }
 

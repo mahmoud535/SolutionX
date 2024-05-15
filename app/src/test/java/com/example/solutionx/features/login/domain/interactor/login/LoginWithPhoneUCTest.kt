@@ -1,38 +1,32 @@
 package com.example.solutionx.features.login.domain.interactor.login
 
-import android.accounts.NetworkErrorException
 import com.example.solutionx.common.data.model.Resource
 import com.example.solutionx.common.data.model.exception.LeonException
 import com.example.solutionx.features.login.data.mapper.UserMapper
-import com.example.solutionx.features.login.data.model.entity.UserEntity
-import com.example.solutionx.features.login.data.model.request.LoginRequest
-import com.example.solutionx.features.login.data.model.request.Phone
+import com.example.solutionx.features.signup.data.model.request.SignupRequest
+import com.example.solutionx.features.signup.data.model.request.Phone
 import com.example.solutionx.features.login.domain.model.Login
 import com.example.solutionx.features.login.domain.model.User
-import com.example.solutionx.features.login.domain.repository.ILoginRepository
+import com.example.solutionx.features.signup.domain.repository.ISignupRepository
 import io.mockk.*
-import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import okhttp3.internal.wait
 import org.junit.After
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import javax.security.auth.login.LoginException
-import org.mockito.kotlin.*
+import com.google.common.truth.Truth.assertThat
 
 /*
 - validation
  */
 class LoginWithPhoneUCTest {
 
-    private lateinit var repository: ILoginRepository
+    private lateinit var repository: ISignupRepository
     private lateinit var loginWithPhoneUC: LoginWithPhoneUC
     private val testDispatcher = UnconfinedTestDispatcher()
     @Before
@@ -53,7 +47,7 @@ class LoginWithPhoneUCTest {
     fun `test successful login with phone, country code , and password `() = runTest {
         // Given a valid login request with the specified phone, country code, and password
         val phone = Phone(countryCode = "0020", number = "100100100")
-        val loginRequest = LoginRequest(phone = phone, password = "123456789")
+        val loginRequest = SignupRequest(phone = phone, password = "123456789")
 
         // Define a user that is expected to be returned by the repository
         val user = User(
@@ -97,43 +91,51 @@ class LoginWithPhoneUCTest {
     }
 
 
-//    @Test
-//    fun `test failed login due to invalid credentials`() = runTest {
-//        // Given a login request with invalid credentials
-//        val phone = Phone(countryCode = "0020", number = "100100100")
-//        val loginRequest = LoginRequest(phone = phone, password = "invalid")
-//
-//        // Mock the repository behavior to return a failure response
-//        val exception = LeonException.Unknown("Invalid credentials")
-//        coEvery { repository.loginWithPhone(loginRequest) } returns Resource.failure(exception) as Login
-//
-//        // When invoking the use case
-//        var result: Resource<User>? = null
-//        loginWithPhoneUC(CoroutineScope(Dispatchers.Default), loginRequest) {
-//            result = it
-//        }
-//
-//        // Wait for the coroutine to complete
-//        advanceUntilIdle()
-//
-//        // Then the result should be a failure with the expected error message
-//        assertNotNull(result)
-//        assertTrue(result is Resource.Failure)
-//        assertEquals(exception, (result as Resource.Failure).exception)
-//
-//        // Verify repository interactions
-//        coVerify { repository.loginWithPhone(loginRequest) }
-//        coVerify(exactly = 0) { repository.saveUser(any()) }
-//        coVerify(exactly = 0) { repository.saveAccessToken(any()) }
-//        coVerify(exactly = 0) { repository.getUser() }
-//    }
-//
+
+
+    @Test
+    fun `test network error during login`() = runTest {
+        // Given a login request
+        val phone = Phone(countryCode = "0020", number = "100100100")
+        val loginRequest = SignupRequest(phone = phone, password = "valid_password")
+        val networkError = LeonException.Network.Unhandled(messageRes = 0, message = "Network error")
+
+        // Mock the repository behavior to throw a network error
+        coEvery { repository.loginWithPhone(loginRequest) } throws networkError
+
+        // When invoking the use case
+        var result: Resource<User>? = null
+        loginWithPhoneUC(CoroutineScope(Dispatchers.Default), loginRequest) {
+            result = it
+        }
+
+        // Wait for the coroutine to complete
+        advanceUntilIdle()
+
+        // Then the result should be a failure with the expected network error
+        assertThat(result).isNotNull()
+        assertThat(result).isInstanceOf(Resource.Failure::class.java)
+        assertThat((result as Resource.Failure).exception).isEqualTo(networkError)
+
+        // Verify repository interactions
+        coVerify { repository.loginWithPhone(loginRequest) }
+        coVerify(exactly = 0) { repository.saveUser(any()) }
+        coVerify(exactly = 0) { repository.saveAccessToken(any()) }
+        coVerify(exactly = 0) { repository.getUser() }
+    }
+
+
+
+
+    //-----------------------------------------------------------------------------------------//
+
+
 //    @Test
 //    fun `test failed login due to network error`() = runBlockingTest {
 //        // Arrange
 //        val phone = Phone(countryCode = "0020", number = "100100100")
-//        val loginRequest = LoginRequest(phone = phone, password = "123456789")
-//        val mockedLoginRepo = mock<ILoginRepository> {
+//        val loginRequest = SignupRequest(phone = phone, password = "123456789")
+//        val mockedLoginRepo = mock<ISignupRepository> {
 //            onBlocking { loginWithPhone(loginRequest) } doThrow NetworkErrorException("Network error")
 //        }
 //        val loginWithPhoneUC = LoginWithPhoneUC(mockedLoginRepo)
@@ -155,8 +157,8 @@ class LoginWithPhoneUCTest {
 //    fun `test failed login due to server error`() = runBlockingTest {
 //        // Arrange
 //        val phone = Phone(countryCode = "0020", number = "100100100")
-//        val loginRequest = LoginRequest(phone = phone, password = "123456789")
-//        val mockedLoginRepo = mock<ILoginRepository> {
+//        val loginRequest = SignupRequest(phone = phone, password = "123456789")
+//        val mockedLoginRepo = mock<ISignupRepository> {
 //            onBlocking { loginWithPhone(loginRequest) }// doThrow ServerErrorException("Server error")
 //        }
 //        val loginWithPhoneUC = LoginWithPhoneUC(mockedLoginRepo)
@@ -174,27 +176,81 @@ class LoginWithPhoneUCTest {
 //        }
 //    }
 //
+//}
+
 //    @Test
-//    fun `test failed login due to unknown error`() = runBlockingTest {
+//    fun `test failed login due to unknown error`() = runTest {
 //        // Arrange
 //        val phone = Phone(countryCode = "0020", number = "100100100")
-//        val loginRequest = LoginRequest(phone = phone, password = "123456789")
-//        val mockedLoginRepo = mock<ILoginRepository> {
-//            onBlocking { loginWithPhone(loginRequest) } doThrow RuntimeException("Unknown error")
+//        val loginRequest = SignupRequest(phone = phone, password = "123456789")
+//
+//        // Mock the repository behavior to throw an unknown error
+//        val mockedRepository = mockk<ISignupRepository> {
+//            coEvery { loginWithPhone(loginRequest) } throws LeonException.Unknown("Unknown error")
 //        }
-//        val loginWithPhoneUC = LoginWithPhoneUC(mockedLoginRepo)
+//
+//        // Create an instance of the use case with the mocked repository
+//        val loginWithPhoneUC = LoginWithPhoneUC(mockedRepository)
 //
 //        // Act
-//        val result = loginWithPhoneUC(CoroutineScope(Dispatchers.Default), loginRequest) { }
+//        var result: Resource<User>? = null
+//        loginWithPhoneUC(CoroutineScope(Dispatchers.Default), loginRequest) {
+//            result = it
+//        }
 //
 //        // Assert
+//        // Verify that the result is a failure with the expected error message
 //        assertTrue(result is Resource.Failure)
-//        assertEquals("Unknown error", (result as Resource.Failure))
-//        coVerify(exactly = 0) {
-//            mockedLoginRepo.saveUser(any())
-//            mockedLoginRepo.saveAccessToken(any())
-//            mockedLoginRepo.getUser()
-//        }
+//        assertEquals("Unknown error", (result as Resource.Failure).exception.message)
+//
+//        // Verify repository interactions
+//        coVerify { repository.loginWithPhone(loginRequest) }
+//        coVerify(exactly = 0) { repository.saveUser(any()) }
+//        coVerify(exactly = 0) { repository.saveAccessToken(any()) }
+//        coVerify(exactly = 0) { repository.getUser() }
 //    }
+
+
+    //    @Test
+//    fun `test failed login due to invalid credentials`() = runTest {
+//        // Given a login request with invalid credentials
+//        val phone = Phone(countryCode = "0020", number = "100100100")
+//        val loginRequest = SignupRequest(phone = phone, password = "invalid")
+//        val exception = LeonException.Unknown("Invalid credentials")
+//        val user = User(
+//            id = 1,
+//            userName = "jdoe",
+//            fullName = "John Doe",
+//            email = "jdoe@example.com",
+//            phone = phone.number
+//        )
+//
+//        // Define the login object to be returned by the repository
+//        val login = Login(message = "Success", accessToken = "token123", userInfo = user)
+//
+//        // Mock the repository behavior to return a failure response
+//        coEvery { repository.loginWithPhone(loginRequest) } returns login
+//
+//        // When invoking the use case
+//        var result: Resource<User>? = null
+//        loginWithPhoneUC(CoroutineScope(Dispatchers.Default), loginRequest) {
+//            result = it
+//        }
+//
+//        // Wait for the coroutine to complete
+//        advanceUntilIdle()
+//
+//        // Then the result should be a failure with the expected error message
+//        assertThat(result).isNotNull()
+//        assertThat(result).isInstanceOf(Resource.Failure::class.java)
+//        assertThat((result as Resource.Failure).exception).isEqualTo(exception)
+//
+//        // Verify repository interactions
+//        coVerify { repository.loginWithPhone(loginRequest) }
+//        coVerify(exactly = 0) { repository.saveUser(any()) }
+//        coVerify(exactly = 0) { repository.saveAccessToken(any()) }
+//        coVerify(exactly = 0) { repository.getUser() }
+//    }
+
 
 }

@@ -23,16 +23,19 @@ import com.example.solutionx.common.data.model.exception.LeonException
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.HttpException
 
-abstract class BaseFragment<VB : ViewBinding>(
-    private val bindingInflate: (inflater: LayoutInflater) -> VB
-) : Fragment() {
+abstract class BaseFragment<binding : ViewBinding> : Fragment() {
 
-    private var _binding: VB? = null
-    val binding: VB
-        get() = _binding ?: throw IllegalStateException("ViewBinding is not initialized")
+    protected abstract val bindingClass: Class<binding>
+    private var _binding: binding? = null
+    val binding: binding get() = _binding!!
+
+    private fun bindView(inflater: LayoutInflater, container: ViewGroup?): binding {
+        @Suppress("UNCHECKED_CAST")
+        return bindingClass.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java, Boolean::class.java)
+            .invoke(null, inflater, container, false) as binding
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -40,7 +43,7 @@ abstract class BaseFragment<VB : ViewBinding>(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = bindingInflate.invoke(inflater)
+        _binding = bindView(inflater, container)
         return binding.root
     }
 
@@ -63,7 +66,6 @@ abstract class BaseFragment<VB : ViewBinding>(
     abstract fun setUpActions()
     abstract fun setUpObservers()
     abstract fun setUpListeners()
-    abstract fun setUpRecyclerView()
 
 
     fun showAlertDialog(@StringRes titleRes: Int, message: String) {
@@ -147,18 +149,9 @@ abstract class BaseFragment<VB : ViewBinding>(
                 }
             }
             is LeonException.Server -> {
-                if (exception is LeonException.Server.InternalServerError) {
-                    showAlertDialog(R.string.internal_server_error, "Internal server error occurred. Please try again later.")
-                } else if (exception is retrofit2.HttpException) {
-                    val httpErrorCode = exception.code()
-                    when (httpErrorCode) {
-                        404 -> {
-                            showAlertDialog(R.string.not_found, "Resource not found")
-                        }
-                        401 -> {
-                            showAlertDialog(R.string.unauthorized, "Unauthorized access")
-                        }
-                        else -> { }
+                when (exception) {
+                    is LeonException.Server.InternalServerError -> {
+                        showAlertDialog(R.string.internal_server_error, "Internal server error occurred. Please try again later.")
                     }
                 }
             }

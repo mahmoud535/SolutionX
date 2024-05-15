@@ -91,6 +91,7 @@ android {
 
 dependencies {
 
+
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
@@ -160,12 +161,17 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
     testImplementation("io.mockk:mockk:1.12.0") // MockK
     testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
+    testImplementation ("com.google.truth:truth:1.4.2")
+//    testImplementation ("org.jetbrains.kotlin:kotlin-test-junit:1.9.10")
+
 
     // Kotlin + coroutines
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
     //swipe to refresh
     implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
+
 }
 
 kapt {

@@ -47,7 +47,12 @@ internal class RestApiNetworkProvider  @Inject constructor(private val serviceAp
         headers: Map<String, Any>?,
         queryParams: Map<String, Any>?
     ): ResponseBody {
-        TODO("Not yet implemented")
+        val response  = serviceApi.get(
+            pathUrl = pathUrl, headers = headers ?: hashMapOf(),
+            queryParams = queryParams ?: hashMapOf()
+        )
+
+        return Gson().fromJson(response.string(), responseWrappedModel)
     }
 
 
